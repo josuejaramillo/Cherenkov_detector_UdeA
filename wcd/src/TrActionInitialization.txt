@@ -1,0 +1,34 @@
+#include "TrActionInitilization.hh"
+#include "PrimaryGeneratorAction_Ascii.hh"
+#include "PrimaryGeneratorAction_GenPartSrc.hh"
+#include "RunAction.hh"
+#include "EventAction.hh"
+#include "TrackingAction.hh"
+
+
+ActionInitialization::ActionInitialization()
+{}
+
+ActionInitialization::~ActionInitialization()
+{}
+
+void ActionInitialization::BuildForMaster() const
+{
+  EventAction* theEventAction = new EventAction;
+  SetUserAction(new RunAction(theEventAction));
+}
+
+void ActionInitialization::Build() const
+{
+	PrimaryGeneratorAction_Ascii *generator = new PrimaryGeneratorAction_Ascii();
+	//PrimaryGeneratorAction_GenPartSrc *generator = new PrimaryGeneratorAction_GenPartSrc();
+	SetUserAction(generator);
+  auto theEventAction = new EventAction;
+  SetUserAction(theEventAction);
+
+  SetUserAction(new RunAction(theEventAction));
+
+  SetUserAction(new TrackingAction());
+	
+}
+
