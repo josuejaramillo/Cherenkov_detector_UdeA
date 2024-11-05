@@ -1,0 +1,36 @@
+/run/verbose 2
+/run/initialize
+/control/execute vis.mac
+/vis/open OGL 600x600-0+0
+/vis/sceneHandler/create OGL
+/vis/viewer/create ! ! 600x600-0+0
+/vis/viewer/refresh
+/vis/viewer/set/autoRefresh true
+/vis/drawVolume
+/vis/scene/create
+/vis/scene/add/volume world -1 -1 none m 0 0 0 0 0 0
+/vis/sceneHandler/attach
+/vis/viewer/zoom 1.5
+/vis/viewer/refresh
+/vis/scene/add/trajectories smooth
+/tracking/storeTrajectory 2
+/vis/scene/notifyHandlers
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+/vis/scene/notifyHandlers scene-0
+/vis/scene/add/scale
+/vis/scene/notifyHandlers
+/vis/scene/endOfEventAction accumulate
+/tracking/storeTrajectory 1
+/vis/scene/notifyHandlers
+/vis/viewer/update
+/vis/viewer/set/autoRefresh true
+/vis/viewer/refresh
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories 
+/tracking/storeTrajectory 1
+/vis/scene/notifyHandlers
+/run/beamOn 1000
+/vis/scene/notifyHandlers scene-0

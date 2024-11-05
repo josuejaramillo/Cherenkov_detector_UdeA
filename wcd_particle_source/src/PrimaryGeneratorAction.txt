@@ -1,0 +1,61 @@
+
+// Geant4 Libraries
+//
+#include "Randomize.hh"
+
+#include "G4Event.hh"
+#include "G4ParticleGun.hh"
+#include "G4ParticleTable.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4SystemOfUnits.hh"
+
+
+// Local Libraries
+//
+#include "PrimaryGeneratorAction.hh"
+// #include "PrimaryGeneratorMessenger.hh"
+
+#include "G4LogicalVolumeStore.hh"
+#include "G4LogicalVolume.hh"
+#include "G4RunManager.hh"
+
+PrimaryGeneratorAction::PrimaryGeneratorAction()
+{
+
+  fParticleGun = new G4ParticleGun(1);
+
+}
+
+
+PrimaryGeneratorAction::~PrimaryGeneratorAction()
+{
+  delete fParticleGun;
+}
+
+void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
+{
+	
+	G4ParticleTable* particleTable 
+		= G4ParticleTable::GetParticleTable();
+	
+  G4String particleName = "mu-";
+
+	G4ParticleDefinition* particle 
+		= particleTable->FindParticle("proton");
+
+
+  // G4ThreeVector pos(0.,-0.3*m,1*m);
+  G4ThreeVector pos(0.,15.*cm,1*m);
+  G4ThreeVector mom(0.,0.,-1.);
+
+  fParticleGun->SetParticlePosition(pos);
+  fParticleGun->SetParticleMomentumDirection(mom);
+  fParticleGun->SetParticleEnergy(10000.*MeV); //Kinetic Energy
+  fParticleGun->SetParticleDefinition(particle);
+
+  fParticleGun->GeneratePrimaryVertex(anEvent);
+
+}
+
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
