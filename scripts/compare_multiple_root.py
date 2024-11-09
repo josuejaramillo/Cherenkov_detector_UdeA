@@ -54,8 +54,8 @@ normalized_counts_water = counts_water / PMTarea
 normalized_counts_colloid = counts_colloid / PMTarea
 
 # Calcular el error para cada bin: error = 1 / sqrt(NumEventBin)
-errors_water = 1 / np.sqrt(counts_water)
-errors_colloid = 1 / np.sqrt(counts_colloid)
+errors_water = np.sqrt(counts_water)
+errors_colloid = np.sqrt(counts_colloid)
 normalized_errors_water = errors_water / PMTarea
 normalized_errors_colloid = errors_colloid / PMTarea
 
@@ -65,10 +65,9 @@ total_events_colloid = np.sum(counts_colloid)
 
 # Graficar ambos histogramas normalizados con barras de error
 plt.figure(figsize=(8, 6))
-plt.bar(bin_edges[:-1], normalized_counts_colloid, width=bin_width, align='edge', yerr=normalized_errors_colloid,
-        capsize=3, color='crimson', alpha=0.5, label='TiO2 colloid')
+plt.bar(bin_edges[:-1], normalized_counts_colloid, width=bin_width, align='edge', yerr=normalized_errors_colloid,capsize=2, color='crimson', alpha=0.5, label='TiO2 colloid')
 plt.bar(bin_edges[:-1], normalized_counts_water, width=bin_width, align='edge', yerr=normalized_errors_water,
-        capsize=3, color='blue', alpha=0.7, label='Water')
+        capsize=2, color='blue', alpha=0.7, label='Water')
 
 # Añadir texto con el número total de eventos
 plt.text(0.45, 0.65, f"Total photons using water: {total_events_water}", transform=plt.gca().transAxes,
