@@ -1,0 +1,40 @@
+tiempo seed 2: 
+real	40m4,449s
+user	36m35,597s
+sys	0m2,325s
+tiempo seed 5: 
+real	40m29,088s
+user	36m54,723s
+sys	0m2,631s
+tiempo seed 6: 
+real	40m52,356s
+user	37m22,493s
+sys	0m2,592s
+tiempo seed 1: 
+real	40m55,707s
+user	37m22,045s
+sys	0m2,067s
+tiempo seed 3: 
+real	40m58,223s
+user	37m28,780s
+sys	0m2,350s
+tiempo seed 8: 
+real	40m58,766s
+user	37m22,197s
+sys	0m2,393s
+tiempo seed 4: 
+real	40m58,968s
+user	37m30,994s
+sys	0m2,497s
+tiempo seed 7: 
+real	41m16,336s
+user	37m44,580s
+sys	0m2,179s
+tiempo seed 9: 
+real	15m18,169s
+user	15m11,203s
+sys	0m0,800s
+tiempo seed 10: 
+real	15m10,904s
+user	15m6,558s
+sys	0m0,723s

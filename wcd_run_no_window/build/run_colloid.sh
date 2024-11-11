@@ -1,0 +1,1 @@
+parallel 'echo "tiempo seed {}: $(time (./wcd_colloid -N 1000 -output run_colloid -seed {} > ./parallel_outputs/colloid_output_{}.log 2>&1) 2>&1)" >> ./parallel_outputs/timing_colloid.txt' ::: {1..10}

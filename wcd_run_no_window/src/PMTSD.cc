@@ -34,7 +34,7 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     // Contar los fotones
     eventAction->AddPhotonCount(); // Aumentar el contador de fotones
 	if (eventAction->GetPhotonCount() > 10000) {
-	G4cout << "Límite de 1000 fotones alcanzado, pasando al siguiente evento." << G4endl;
+	G4cout << "Límite de 10000 fotones alcanzado, pasando al siguiente evento." << G4endl;
         G4RunManager::GetRunManager()->AbortEvent();  // Detiene el evento actual y pasa al siguiente
         return false;
     }

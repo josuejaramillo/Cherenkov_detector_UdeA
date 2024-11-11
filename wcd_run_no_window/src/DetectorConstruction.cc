@@ -526,7 +526,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   wcd_tank_log //esta es el agua
     = new G4LogicalVolume(wcd_tank,
-        TiO2_colloid, //TiO2_colloid, water
+        water, //TiO2_colloid, water
         "Tank",
         0,
         0,
@@ -591,7 +591,6 @@ G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV,
 G4double ref = 0.8;
 G4double abs = 1-ref;
 G4double reflectivity[num]  = {ref, ref, ref, ref, ref, ref, ref, ref, ref, ref};  // 80% de reflexión
-G4double absorption[num] = {abs, abs, abs, abs, abs, abs, abs, abs, abs, abs}; // 20% de absorción
 G4double specularLobe[num]  = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Reflexión especular baja
 G4double specularSpike[num] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}; // Sin especularidad
 G4double backScatter[num]   = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Backscatter leve
