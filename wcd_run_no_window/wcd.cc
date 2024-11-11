@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     }
   }
 
-  std::string nombreArchivoSalida = nombreArchivoBase + "_" + std::to_string(seed);
+  std::string nombreArchivoSalida = "./rootFiles/" + nombreArchivoBase + "_" + std::to_string(seed);
 
   // Determina si se está en modo interactivo o batch
   G4UIExecutive* ui = nullptr;

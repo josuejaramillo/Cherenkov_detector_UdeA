@@ -33,7 +33,7 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     }
     // Contar los fotones
     eventAction->AddPhotonCount(); // Aumentar el contador de fotones
-	if (eventAction->GetPhotonCount() > 1000) {
+	if (eventAction->GetPhotonCount() > 10000) {
 	G4cout << "Límite de 1000 fotones alcanzado, pasando al siguiente evento." << G4endl;
         G4RunManager::GetRunManager()->AbortEvent();  // Detiene el evento actual y pasa al siguiente
         return false;
@@ -64,7 +64,7 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     const G4double c = 3.0e8;  // Velocidad de la luz en m/s
 
     // Fórmula para calcular la longitud de onda (en metros)
-    G4double photonWavelength = h * c / (photonEnergy*1e6);  // Longitud de onda en metros
+    G4double photonWavelength = h * c / (photonEnergy*1e6);
     photonWavelength *= 1e9; //Longitud de onda en nm
 
     analysisManager->FillNtupleDColumn(0, 0, photonEnergy);     // Energía del fotón

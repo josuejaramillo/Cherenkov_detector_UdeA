@@ -41,25 +41,40 @@ void RunAction::BeginOfRunAction(const G4Run*)
 
 
   // Abrir archivo ROOT
-    analysisManager->OpenFile(fNombreArchivoSalida);
+    analysisManager->OpenFile(fNombreArchivoSalida + ".root");
 
     // Crear Ntuples para la información de la partícula madre y los fotones
-    analysisManager->CreateNtuple("photonData", "Información de la partícula madre");
+    analysisManager->CreateNtuple("photonData", "Información de los fotones");
     analysisManager->CreateNtupleDColumn("photonEnergy");           // Energía del fotón
     analysisManager->CreateNtupleDColumn("photonWavelength");           // Energía del fotón
 
+
+    analysisManager->CreateNtuple("muonData", "Información de los muones");
+    analysisManager->CreateNtupleIColumn("eventId");
+    analysisManager->CreateNtupleIColumn("nPhotons");        
+    analysisManager->CreateNtupleIColumn("hits");        
+    analysisManager->CreateNtupleDColumn("depositedEnergy");        
+    analysisManager->CreateNtupleDColumn("energy");        
+    analysisManager->CreateNtupleDColumn("px");        
+    analysisManager->CreateNtupleDColumn("py");        
+    analysisManager->CreateNtupleDColumn("pz");   
+
+    analysisManager->CreateNtupleDColumn("x");        
+    analysisManager->CreateNtupleDColumn("y");        
+    analysisManager->CreateNtupleDColumn("z");  
     // Finalizar configuración de Ntuples
     analysisManager->FinishNtuple(0); //For photons
+    analysisManager->FinishNtuple(1); //For muons
 
-  // Abrir el archivo al inicio de la corrida
-  outFile.open(fNombreArchivoSalida + "_infPhotons.csv");
-  if (!outFile.is_open()) {
-      G4cerr << "Error al abrir el archivo de salida!" << G4endl;
-  } else {
-      // Escribir el encabezado una vez
-      outFile << "EventID\tnPhotons\tHits\tDepositedEnergy\n";
-      // outFile << "EventID\tTrackID\tnPhotons\tPx\tPy\tPz\tKineticEnergy\tHits\n";
-  }
+  // // Abrir el archivo al inicio de la corrida
+  // outFile.open(fNombreArchivoSalida + "_infPhotons.csv");
+  // if (!outFile.is_open()) {
+  //     G4cerr << "Error al abrir el archivo de salida!" << G4endl;
+  // } else {
+  //     // Escribir el encabezado una vez
+  //     outFile << "EventID\tnPhotons\tHits\tDepositedEnergy\n";
+  //     // outFile << "EventID\tTrackID\tnPhotons\tPx\tPy\tPz\tKineticEnergy\tHits\n";
+  // }
 
 }
 

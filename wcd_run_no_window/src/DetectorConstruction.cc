@@ -283,10 +283,11 @@ void DetectorConstruction::DefineMaterials()
   
   TiO2_colloid
     = new G4Material("TiO2_colloid ", density = 1.002*g/cm3, 2);
-  TiO2_colloid->AddMaterial(water, 99.93*perCent);
-  TiO2_colloid->AddMaterial(TiDioxide, 0.07*perCent);
+  TiO2_colloid->AddMaterial(water, 95*perCent);
+  TiO2_colloid->AddMaterial(TiDioxide, 5*perCent);
 
-
+  // TiO2_colloid->AddMaterial(water, 99.93*perCent);
+  // TiO2_colloid->AddMaterial(TiDioxide, 0.07*perCent);
   // -------------------------
   // *** TiO2 colloid Propierties ***
   // -------------------------
@@ -299,7 +300,7 @@ G4double photonEnergy_colloid[] =
   1.951*eV, 2.044*eV, 2.147*eV, 2.261*eV, 
   2.387*eV, 2.529*eV, 2.688*eV, 2.868*eV, 
   3.075*eV, 3.313*eV, 3.592*eV, 3.922*eV, 
-  4.319*eV, 4.804*eV, 5.413*eV
+  4.319*eV, 4.804*eV, 5.413*eV, 6.1*eV
 };
 
 const G4int nEntriesColloid = sizeof(photonEnergy_colloid)/sizeof(G4double);
@@ -313,7 +314,7 @@ G4double refractiveIndex_TiO2[] =
     2.48904049, 2.50036329, 2.51376563, 2.52971256, 
     2.54878481, 2.57223532, 2.60117285, 2.63771768, 
     2.68537603, 2.74886801, 2.83772959, 2.96888536, 
-    3.18003168, 3.57122366, 4.56502253
+    3.18003168, 3.57122366, 4.56502253, 12.32455899
 };
 
  
@@ -525,7 +526,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   wcd_tank_log //esta es el agua
     = new G4LogicalVolume(wcd_tank,
-        TiO2_colloid, //TiO2_colloid,
+        TiO2_colloid, //TiO2_colloid, water
         "Tank",
         0,
         0,
@@ -588,7 +589,9 @@ G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV,
 
 // Coeficientes de reflexión
 G4double ref = 0.8;
+G4double abs = 1-ref;
 G4double reflectivity[num]  = {ref, ref, ref, ref, ref, ref, ref, ref, ref, ref};  // 80% de reflexión
+G4double absorption[num] = {abs, abs, abs, abs, abs, abs, abs, abs, abs, abs}; // 20% de absorción
 G4double specularLobe[num]  = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Reflexión especular baja
 G4double specularSpike[num] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}; // Sin especularidad
 G4double backScatter[num]   = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Backscatter leve
