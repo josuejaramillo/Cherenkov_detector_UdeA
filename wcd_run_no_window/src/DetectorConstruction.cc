@@ -533,10 +533,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
         0
         ); 
 
-  G4VisAttributes* visAttributes = new G4VisAttributes(G4Colour(0.0,0.0,1.0, 0.2));  // Azul para el agua
-  visAttributes->SetVisibility(true);
-  visAttributes->SetForceSolid(true); 
-  wcd_tank_log->SetVisAttributes(visAttributes);
+  // G4VisAttributes* visAttributes = new G4VisAttributes(G4Colour(0.0,0.0,1.0, 0.2));  // Azul para el agua
+  // visAttributes->SetVisibility(true);
+  // visAttributes->SetForceSolid(true); 
+  // wcd_tank_log->SetVisAttributes(visAttributes);
 
   G4VPhysicalVolume* wcd_tank_phys
     = new G4PVPlacement(0,
@@ -589,7 +589,6 @@ G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV,
 
 // Coeficientes de reflexión
 G4double ref = 0.8;
-G4double abs = 1-ref;
 G4double reflectivity[num]  = {ref, ref, ref, ref, ref, ref, ref, ref, ref, ref};  // 80% de reflexión
 G4double specularLobe[num]  = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Reflexión especular baja
 G4double specularSpike[num] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}; // Sin especularidad
@@ -606,7 +605,7 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
   myST1->AddProperty("SPECULARSPIKECONSTANT", ephoton, specularSpike, num);
   myST1->AddProperty("BACKSCATTERCONSTANT", ephoton, backScatter, num);
 
-  G4cout << "Water Surface G4MaterialPropertiesTable" << G4endl;
+  G4cout << "Colloid Surface G4MaterialPropertiesTable" << G4endl;
   myST1->DumpTable();
 
   opWaterSurface->SetMaterialPropertiesTable(myST1);

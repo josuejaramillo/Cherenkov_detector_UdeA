@@ -33,7 +33,7 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     }
     // Contar los fotones
     eventAction->AddPhotonCount(); // Aumentar el contador de fotones
-	if (eventAction->GetPhotonCount() > 10000) {
+	if (eventAction->GetPhotonCount() > 1000) {
 	G4cout << "Límite de 10000 fotones alcanzado, pasando al siguiente evento." << G4endl;
         G4RunManager::GetRunManager()->AbortEvent();  // Detiene el evento actual y pasa al siguiente
         return false;
@@ -45,18 +45,18 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     // Obtener información del fotón detectado
-    G4Track* track = step->GetTrack();
-    int photonTrackId = track->GetTrackID();
+    // G4Track* track = step->GetTrack();
+    // int photonTrackId = track->GetTrackID();
     int eventId = UserEventAction::GetEventId();  // Obtener el ID del evento actual
-    G4ThreeVector photonMomentum = track->GetMomentum();
-    double px = photonMomentum.x();
-    double py = photonMomentum.y();
-    double pz = photonMomentum.z();
+    // G4ThreeVector photonMomentum = track->GetMomentum();
+    // double px = photonMomentum.x();
+    // double py = photonMomentum.y();
+    // double pz = photonMomentum.z();
 
-    G4ThreeVector photonPosition = track->GetPosition();
-    double x = photonPosition.x();
-    double y = photonPosition.y();
-    double z = photonPosition.z();
+    // G4ThreeVector photonPosition = track->GetPosition();
+    // double x = photonPosition.x();
+    // double y = photonPosition.y();
+    // double z = photonPosition.z();
 
     // Llenar los ntuples con la información del fotón
      // Convertir la energía a longitud de onda
@@ -67,12 +67,14 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4double photonWavelength = h * c / (photonEnergy*1e6);
     photonWavelength *= 1e9; //Longitud de onda en nm
 
-    analysisManager->FillNtupleDColumn(0, 0, photonEnergy);     // Energía del fotón
-    analysisManager->FillNtupleDColumn(0, 1, photonWavelength);     // Longitud de onda del fotón
+    analysisManager->FillNtupleIColumn(0, 0, eventId); 
+    analysisManager->FillNtupleDColumn(0, 1, photonEnergy);     // Energía del fotón
+    analysisManager->FillNtupleDColumn(0, 2, photonWavelength);     // Longitud de onda del fotón
 
     // Escribir los datos al archivo ROOT
     
     analysisManager->AddNtupleRow(0);
+    step->GetTrack()->SetTrackStatus(fStopAndKill);
     return true; // Hit procesado correctamente
     
 }

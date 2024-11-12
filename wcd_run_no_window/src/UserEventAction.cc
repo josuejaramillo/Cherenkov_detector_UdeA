@@ -65,6 +65,12 @@ void UserEventAction::EndOfEventAction(const G4Event* event)
             //         << fPhotonCount << "\t" // Número de fotones detectados
             //         << fTotalPhotonEnergy << "\n"; // Energía total de fotones
 
+            if (event->IsAborted()) {
+                // Aquí puedes evitar que se guarde cualquier dato relacionado con este evento
+                G4cout << "El evento ha sido abortado, no se guardan datos." << G4endl;
+                return;
+            }
+
             analysisManager->FillNtupleIColumn(1, 0, fEventId);
             analysisManager->FillNtupleIColumn(1, 1, nPhotons);
             analysisManager->FillNtupleIColumn(1, 2, fPhotonCount);

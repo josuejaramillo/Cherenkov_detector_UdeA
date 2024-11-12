@@ -45,6 +45,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
 
     // Crear Ntuples para la información de la partícula madre y los fotones
     analysisManager->CreateNtuple("photonData", "Información de los fotones");
+    analysisManager->CreateNtupleIColumn("eventId");
     analysisManager->CreateNtupleDColumn("photonEnergy");           // Energía del fotón
     analysisManager->CreateNtupleDColumn("photonWavelength");           // Energía del fotón
 

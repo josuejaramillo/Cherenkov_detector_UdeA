@@ -282,7 +282,7 @@ NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
 
 G4OpticalSurface: data file /home/josue/Geant4/geant4-v10.7.4-install/share/Geant4-10.7.4/data/RealSurface2.2/GroundTyvek.z successfully read in.
 LUT - data file: GroundTyvek.z read in! 
-Water Surface G4MaterialPropertiesTable
+Colloid Surface G4MaterialPropertiesTable
 0: RINDEX
 1e-06   1.5
 2e-06   1.5
@@ -603,7 +603,6 @@ Index : 3     used in the geometry : Yes
 ==================================================================
 
 =======Event 0
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 1
 =======Event 2
 =======Event 3
@@ -798,7 +797,9 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 192
 =======Event 193
 =======Event 194
+Límite de 10000 fotones alcanzado, pasando al siguiente evento.
 =======Event 195
+El evento ha sido abortado, no se guardan datos.
 =======Event 196
 =======Event 197
 =======Event 198
@@ -837,7 +838,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 231
 =======Event 232
 =======Event 233
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 234
 =======Event 235
 =======Event 236
@@ -865,7 +865,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 258
 =======Event 259
 =======Event 260
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 261
 =======Event 262
 =======Event 263
@@ -932,7 +931,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 324
 =======Event 325
 =======Event 326
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 327
 =======Event 328
 =======Event 329
@@ -971,7 +969,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 362
 =======Event 363
 =======Event 364
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 365
 =======Event 366
 =======Event 367
@@ -1331,7 +1328,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 721
 =======Event 722
 =======Event 723
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 724
 =======Event 725
 =======Event 726

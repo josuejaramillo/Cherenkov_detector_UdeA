@@ -282,7 +282,7 @@ NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
 
 G4OpticalSurface: data file /home/josue/Geant4/geant4-v10.7.4-install/share/Geant4-10.7.4/data/RealSurface2.2/GroundTyvek.z successfully read in.
 LUT - data file: GroundTyvek.z read in! 
-Water Surface G4MaterialPropertiesTable
+Colloid Surface G4MaterialPropertiesTable
 0: RINDEX
 1e-06   1.5
 2e-06   1.5
@@ -657,7 +657,6 @@ Index : 3     used in the geometry : Yes
 =======Event 52
 =======Event 53
 =======Event 54
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 55
 =======Event 56
 =======Event 57
@@ -1007,7 +1006,9 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 401
 =======Event 402
 =======Event 403
+Límite de 10000 fotones alcanzado, pasando al siguiente evento.
 =======Event 404
+El evento ha sido abortado, no se guardan datos.
 =======Event 405
 =======Event 406
 =======Event 407
@@ -1127,7 +1128,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 521
 =======Event 522
 =======Event 523
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 524
 =======Event 525
 =======Event 526
@@ -1177,7 +1177,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 570
 =======Event 571
 =======Event 572
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 573
 =======Event 574
 =======Event 575
@@ -1297,7 +1296,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 689
 =======Event 690
 =======Event 691
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 692
 =======Event 693
 =======Event 694
@@ -1348,7 +1346,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 739
 =======Event 740
 =======Event 741
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 742
 =======Event 743
 =======Event 744
@@ -1417,7 +1414,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 807
 =======Event 808
 =======Event 809
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 810
 =======Event 811
 =======Event 812

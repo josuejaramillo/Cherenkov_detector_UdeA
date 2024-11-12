@@ -1,0 +1,1634 @@
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-04    (9-September-2022)
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+...DetectorConstruction...
+...StackingAction...
+Water G4MaterialPropertiesTable
+0: RINDEX
+1.127e-06   1.32462
+1.158e-06   1.32507
+1.19e-06   1.32551
+1.224e-06   1.32595
+1.26e-06   1.32639
+1.298e-06   1.32684
+1.339e-06   1.32728
+1.383e-06   1.32773
+1.429e-06   1.32819
+1.478e-06   1.32867
+1.531e-06   1.32916
+1.588e-06   1.32967
+1.65e-06   1.3302
+1.716e-06   1.33077
+1.788e-06   1.33138
+1.866e-06   1.33204
+1.951e-06   1.33277
+2.044e-06   1.33357
+2.147e-06   1.33446
+2.261e-06   1.33548
+2.387e-06   1.33665
+2.529e-06   1.33802
+2.688e-06   1.33964
+2.868e-06   1.3416
+3.075e-06   1.34402
+3.313e-06   1.34706
+3.592e-06   1.35101
+3.922e-06   1.35628
+4.319e-06   1.36366
+4.804e-06   1.37457
+5.413e-06   1.39219
+6.199e-06   1.42517
+9: GROUPVEL
+1.127e-06   223.529
+1.1425e-06   223.491
+1.174e-06   223.457
+1.207e-06   223.488
+1.242e-06   223.493
+1.279e-06   223.475
+1.3185e-06   223.493
+1.361e-06   223.478
+1.406e-06   223.384
+1.4535e-06   223.314
+1.5045e-06   223.258
+1.5595e-06   223.164
+1.619e-06   223.068
+1.683e-06   222.893
+1.752e-06   222.741
+1.827e-06   222.533
+1.9085e-06   222.293
+1.9975e-06   222.01
+2.0955e-06   221.698
+2.204e-06   221.307
+2.324e-06   220.815
+2.458e-06   220.272
+2.6085e-06   219.555
+2.778e-06   218.688
+2.9715e-06   217.64
+3.194e-06   216.242
+3.4525e-06   214.476
+3.757e-06   212.064
+4.1205e-06   208.707
+4.5615e-06   203.709
+5.1085e-06   195.81
+6.199e-06   179.688
+10: MIEHG
+1.56962e-06   1.67024e+08
+1.58974e-06   1.58727e+08
+1.61039e-06   1.50742e+08
+1.63157e-06   1.43062e+08
+1.65333e-06   1.3568e+08
+1.67567e-06   1.28587e+08
+1.69863e-06   1.21776e+08
+1.72222e-06   1.1524e+08
+1.74647e-06   1.0897e+08
+1.77142e-06   1.02959e+08
+1.7971e-06   9.72004e+07
+1.82352e-06   9.16869e+07
+1.85074e-06   8.64113e+07
+1.87878e-06   8.13668e+07
+1.90769e-06   7.65464e+07
+1.93749e-06   7.19435e+07
+1.96825e-06   6.75513e+07
+1.99999e-06   6.33634e+07
+2.03278e-06   5.93732e+07
+2.06666e-06   5.55746e+07
+2.10169e-06   5.19612e+07
+2.13793e-06   4.8527e+07
+2.17543e-06   4.52659e+07
+2.21428e-06   4.21719e+07
+2.25454e-06   3.92394e+07
+2.29629e-06   3.64625e+07
+2.33962e-06   3.38357e+07
+2.38461e-06   3.13534e+07
+2.43137e-06   2.90103e+07
+2.47999e-06   2.6801e+07
+2.53061e-06   2.47204e+07
+2.58333e-06   2.27634e+07
+2.63829e-06   2.09249e+07
+2.69565e-06   1.92001e+07
+2.75555e-06   1.75842e+07
+2.81817e-06   1.60724e+07
+2.88371e-06   1.46604e+07
+2.95237e-06   1.33435e+07
+3.02438e-06   1.21173e+07
+3.09999e-06   1.09777e+07
+3.17948e-06   9.92042e+06
+3.26315e-06   8.94141e+06
+3.35134e-06   8.03671e+06
+3.44444e-06   7.20247e+06
+3.54285e-06   6.43493e+06
+3.64705e-06   5.73043e+06
+3.75757e-06   5.08542e+06
+3.87499e-06   4.49647e+06
+3.99999e-06   3.96021e+06
+4.13332e-06   3.47341e+06
+4.27585e-06   3.03294e+06
+4.42856e-06   2.63575e+06
+4.59258e-06   2.27891e+06
+4.76922e-06   1.95959e+06
+4.95999e-06   1.67506e+06
+5.16665e-06   1.42271e+06
+5.39129e-06   1.2e+06
+5.63635e-06   1.00453e+06
+5.90475e-06   833967
+6.19998e-06   686106
+16: ABSLENGTH
+1.127e-06   3448
+1.158e-06   4082
+1.19e-06   6329
+1.224e-06   9174
+1.26e-06   12346
+1.298e-06   13889
+1.339e-06   15152
+1.383e-06   17241
+1.429e-06   18868
+1.478e-06   20000
+1.531e-06   26316
+1.588e-06   35714
+1.65e-06   45455
+1.716e-06   47619
+1.788e-06   52632
+1.866e-06   52632
+1.951e-06   55556
+2.044e-06   52632
+2.147e-06   52632
+2.261e-06   47619
+2.387e-06   45455
+2.529e-06   41667
+2.688e-06   37037
+2.868e-06   33333
+3.075e-06   30000
+3.313e-06   28500
+3.592e-06   27000
+3.922e-06   24500
+4.319e-06   22000
+4.804e-06   19500
+5.413e-06   17500
+6.199e-06   14500
+7: MIEHG_FORWARD
+0.99
+8: MIEHG_BACKWARD
+0.99
+9: MIEHG_FORWARD_RATIO
+0.8
+0: RINDEX
+1.127e-06   2.41659
+1.158e-06   2.41851
+1.19e-06   2.42055
+1.224e-06   2.42278
+1.26e-06   2.42523
+1.298e-06   2.42789
+1.339e-06   2.43087
+1.383e-06   2.43419
+1.429e-06   2.43779
+1.478e-06   2.44178
+1.531e-06   2.44628
+1.588e-06   2.45133
+1.65e-06   2.45708
+1.716e-06   2.4635
+1.788e-06   2.47088
+1.866e-06   2.47931
+1.951e-06   2.48904
+2.044e-06   2.50036
+2.147e-06   2.51377
+2.261e-06   2.52971
+2.387e-06   2.54878
+2.529e-06   2.57224
+2.688e-06   2.60117
+2.868e-06   2.63772
+3.075e-06   2.68538
+3.313e-06   2.74887
+3.592e-06   2.83773
+3.922e-06   2.96889
+4.319e-06   3.18003
+4.804e-06   3.57122
+5.413e-06   4.56502
+6.1e-06   12.3246
+9: GROUPVEL
+1.127e-06   120.534
+1.1425e-06   120.487
+1.174e-06   120.19
+1.207e-06   119.869
+1.242e-06   119.52
+1.279e-06   119.139
+1.3185e-06   118.72
+1.361e-06   118.255
+1.406e-06   117.747
+1.4535e-06   117.192
+1.5045e-06   116.575
+1.5595e-06   115.886
+1.619e-06   115.112
+1.683e-06   114.246
+1.752e-06   113.275
+1.827e-06   112.175
+1.9085e-06   110.926
+1.9975e-06   109.499
+2.0955e-06   107.852
+2.204e-06   105.935
+2.324e-06   103.701
+2.458e-06   101.065
+2.6085e-06   97.9299
+2.778e-06   94.1779
+2.9715e-06   89.6131
+3.194e-06   84.0037
+3.4525e-06   77.0215
+3.757e-06   68.2039
+4.1205e-06   56.9485
+4.5615e-06   42.5154
+5.1085e-06   24.1874
+6.1e-06   3.88001
+Checking overlaps for volume wcdThickness (G4Cons) ... OK! 
+Checking overlaps for volume wcdinferior (G4Tubs) ... 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+      issued by : G4PVPlacement::CheckOverlaps()
+Overlap with volume already placed !
+          Overlap is detected for volume wcdinferior:0 (G4Tubs)
+          with wcdThickness:0 (G4Cons) volume's
+          local point (84.0503,-277.553,-369.431), overlapping by at least: 113.083 um 
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Checking overlaps for volume wcdsuperior (G4Tubs) ... 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+      issued by : G4PVPlacement::CheckOverlaps()
+Overlap with volume already placed !
+          Overlap is detected for volume wcdsuperior:0 (G4Tubs)
+          with wcdThickness:0 (G4Cons) volume's
+          local point (-214.778,382.866,369), overlapping by at least: 192.986 um 
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Checking overlaps for volume Tank (G4Cons) ... 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+      issued by : G4PVPlacement::CheckOverlaps()
+Overlap with volume already placed !
+          Overlap is detected for volume Tank:0 (G4Cons)
+          with wcdinferior:0 (G4Tubs) volume's
+          local point (168.501,-152.845,0), overlapping by at least: 1 mm 
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4OpticalSurface: data file /home/josue/Geant4/geant4-v10.7.4-install/share/Geant4-10.7.4/data/RealSurface2.2/GroundTyvek.z successfully read in.
+LUT - data file: GroundTyvek.z read in! 
+Colloid Surface G4MaterialPropertiesTable
+0: RINDEX
+1e-06   1.5
+2e-06   1.5
+2.5e-06   1.5
+3e-06   1.5
+3.5e-06   1.5
+4e-06   1.5
+4.5e-06   1.5
+5e-06   1.5
+5.5e-06   1.5
+6e-06   1.5
+1: REFLECTIVITY
+1e-06   0.8
+2e-06   0.8
+2.5e-06   0.8
+3e-06   0.8
+3.5e-06   0.8
+4e-06   0.8
+4.5e-06   0.8
+5e-06   0.8
+5.5e-06   0.8
+6e-06   0.8
+6: SPECULARLOBECONSTANT
+1e-06   0.05
+2e-06   0.05
+2.5e-06   0.05
+3e-06   0.05
+3.5e-06   0.05
+4e-06   0.05
+4.5e-06   0.05
+5e-06   0.05
+5.5e-06   0.05
+6e-06   0.05
+7: SPECULARSPIKECONSTANT
+1e-06   0
+2e-06   0
+2.5e-06   0
+3e-06   0
+3.5e-06   0
+4e-06   0
+4.5e-06   0
+5e-06   0
+5.5e-06   0
+6e-06   0
+8: BACKSCATTERCONSTANT
+1e-06   0.05
+2e-06   0.05
+2.5e-06   0.05
+3e-06   0.05
+3.5e-06   0.05
+4e-06   0.05
+4.5e-06   0.05
+5e-06   0.05
+5.5e-06   0.05
+6e-06   0.05
+9: GROUPVEL
+1e-06   199.862
+1.5e-06   199.862
+2.25e-06   199.862
+2.75e-06   199.862
+3.25e-06   199.862
+3.75e-06   199.862
+4.25e-06   199.862
+4.75e-06   199.862
+5.25e-06   199.862
+6e-06   199.862
+Checking overlaps for volume pmt_tube (G4Tubs) ... OK! 
+### Birks coefficients used in run time
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina : Emin=    0 eV  Emax=  100 TeV
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for GenericIon  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for alpha  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=7.9452 MeV
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for anti_proton  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for kaon+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for kaon-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+muIoni:  for mu+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu+  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+muIoni:  for mu-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu-  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for pi+  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llimit=1
+
+hIoni:  for pi-  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_AIR
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : Tyvek
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  1.56348 keV    e-  189.623 keV    e+  184.594 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : Water
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  2.94056 keV    e-  351.877 keV    e+  342.545 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Pyrex_Glass
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  5.38386 keV    e-  540.972 keV    e+  519.593 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+=======Event 0
+=======Event 1
+=======Event 2
+=======Event 3
+=======Event 4
+=======Event 5
+=======Event 6
+=======Event 7
+=======Event 8
+=======Event 9
+=======Event 10
+=======Event 11
+=======Event 12
+=======Event 13
+=======Event 14
+=======Event 15
+=======Event 16
+=======Event 17
+=======Event 18
+=======Event 19
+=======Event 20
+=======Event 21
+=======Event 22
+=======Event 23
+=======Event 24
+=======Event 25
+=======Event 26
+=======Event 27
+=======Event 28
+=======Event 29
+=======Event 30
+=======Event 31
+=======Event 32
+=======Event 33
+=======Event 34
+=======Event 35
+=======Event 36
+=======Event 37
+=======Event 38
+=======Event 39
+=======Event 40
+=======Event 41
+=======Event 42
+=======Event 43
+=======Event 44
+=======Event 45
+=======Event 46
+=======Event 47
+=======Event 48
+=======Event 49
+=======Event 50
+=======Event 51
+=======Event 52
+=======Event 53
+=======Event 54
+=======Event 55
+=======Event 56
+=======Event 57
+=======Event 58
+=======Event 59
+=======Event 60
+=======Event 61
+=======Event 62
+=======Event 63
+=======Event 64
+=======Event 65
+=======Event 66
+=======Event 67
+=======Event 68
+=======Event 69
+=======Event 70
+=======Event 71
+=======Event 72
+=======Event 73
+=======Event 74
+=======Event 75
+=======Event 76
+=======Event 77
+=======Event 78
+=======Event 79
+=======Event 80
+=======Event 81
+=======Event 82
+=======Event 83
+=======Event 84
+=======Event 85
+=======Event 86
+=======Event 87
+=======Event 88
+=======Event 89
+=======Event 90
+=======Event 91
+=======Event 92
+=======Event 93
+=======Event 94
+=======Event 95
+=======Event 96
+=======Event 97
+=======Event 98
+=======Event 99
+=======Event 100
+=======Event 101
+=======Event 102
+=======Event 103
+=======Event 104
+=======Event 105
+=======Event 106
+=======Event 107
+=======Event 108
+=======Event 109
+=======Event 110
+=======Event 111
+=======Event 112
+=======Event 113
+=======Event 114
+=======Event 115
+=======Event 116
+=======Event 117
+=======Event 118
+=======Event 119
+=======Event 120
+=======Event 121
+=======Event 122
+=======Event 123
+=======Event 124
+=======Event 125
+=======Event 126
+=======Event 127
+=======Event 128
+=======Event 129
+=======Event 130
+=======Event 131
+=======Event 132
+=======Event 133
+=======Event 134
+=======Event 135
+=======Event 136
+=======Event 137
+=======Event 138
+=======Event 139
+=======Event 140
+=======Event 141
+=======Event 142
+=======Event 143
+=======Event 144
+=======Event 145
+=======Event 146
+=======Event 147
+=======Event 148
+=======Event 149
+=======Event 150
+=======Event 151
+=======Event 152
+=======Event 153
+=======Event 154
+=======Event 155
+=======Event 156
+=======Event 157
+=======Event 158
+=======Event 159
+=======Event 160
+=======Event 161
+=======Event 162
+=======Event 163
+=======Event 164
+=======Event 165
+=======Event 166
+=======Event 167
+=======Event 168
+=======Event 169
+=======Event 170
+=======Event 171
+=======Event 172
+=======Event 173
+=======Event 174
+=======Event 175
+=======Event 176
+=======Event 177
+=======Event 178
+=======Event 179
+=======Event 180
+=======Event 181
+=======Event 182
+=======Event 183
+=======Event 184
+=======Event 185
+=======Event 186
+=======Event 187
+=======Event 188
+=======Event 189
+=======Event 190
+=======Event 191
+=======Event 192
+=======Event 193
+=======Event 194
+=======Event 195
+=======Event 196
+=======Event 197
+=======Event 198
+=======Event 199
+=======Event 200
+=======Event 201
+=======Event 202
+=======Event 203
+=======Event 204
+=======Event 205
+=======Event 206
+=======Event 207
+=======Event 208
+=======Event 209
+=======Event 210
+=======Event 211
+=======Event 212
+=======Event 213
+=======Event 214
+=======Event 215
+=======Event 216
+=======Event 217
+=======Event 218
+=======Event 219
+=======Event 220
+=======Event 221
+=======Event 222
+=======Event 223
+=======Event 224
+=======Event 225
+=======Event 226
+=======Event 227
+=======Event 228
+=======Event 229
+=======Event 230
+=======Event 231
+=======Event 232
+=======Event 233
+=======Event 234
+=======Event 235
+=======Event 236
+=======Event 237
+=======Event 238
+=======Event 239
+=======Event 240
+=======Event 241
+=======Event 242
+=======Event 243
+=======Event 244
+=======Event 245
+=======Event 246
+=======Event 247
+=======Event 248
+=======Event 249
+=======Event 250
+=======Event 251
+=======Event 252
+=======Event 253
+=======Event 254
+=======Event 255
+=======Event 256
+=======Event 257
+=======Event 258
+=======Event 259
+=======Event 260
+=======Event 261
+=======Event 262
+=======Event 263
+=======Event 264
+=======Event 265
+=======Event 266
+=======Event 267
+=======Event 268
+=======Event 269
+=======Event 270
+=======Event 271
+=======Event 272
+=======Event 273
+=======Event 274
+=======Event 275
+=======Event 276
+=======Event 277
+=======Event 278
+=======Event 279
+=======Event 280
+=======Event 281
+=======Event 282
+=======Event 283
+=======Event 284
+=======Event 285
+=======Event 286
+=======Event 287
+=======Event 288
+=======Event 289
+=======Event 290
+=======Event 291
+=======Event 292
+=======Event 293
+=======Event 294
+=======Event 295
+=======Event 296
+=======Event 297
+=======Event 298
+=======Event 299
+=======Event 300
+=======Event 301
+=======Event 302
+=======Event 303
+=======Event 304
+=======Event 305
+=======Event 306
+=======Event 307
+=======Event 308
+=======Event 309
+=======Event 310
+=======Event 311
+=======Event 312
+=======Event 313
+=======Event 314
+=======Event 315
+=======Event 316
+=======Event 317
+=======Event 318
+=======Event 319
+=======Event 320
+=======Event 321
+=======Event 322
+=======Event 323
+=======Event 324
+=======Event 325
+=======Event 326
+=======Event 327
+=======Event 328
+=======Event 329
+=======Event 330
+=======Event 331
+=======Event 332
+=======Event 333
+=======Event 334
+=======Event 335
+=======Event 336
+=======Event 337
+=======Event 338
+=======Event 339
+=======Event 340
+=======Event 341
+=======Event 342
+=======Event 343
+=======Event 344
+=======Event 345
+=======Event 346
+=======Event 347
+=======Event 348
+=======Event 349
+=======Event 350
+=======Event 351
+=======Event 352
+=======Event 353
+=======Event 354
+=======Event 355
+=======Event 356
+=======Event 357
+=======Event 358
+=======Event 359
+=======Event 360
+=======Event 361
+=======Event 362
+=======Event 363
+=======Event 364
+=======Event 365
+=======Event 366
+=======Event 367
+=======Event 368
+=======Event 369
+=======Event 370
+=======Event 371
+=======Event 372
+=======Event 373
+=======Event 374
+=======Event 375
+=======Event 376
+=======Event 377
+=======Event 378
+=======Event 379
+=======Event 380
+=======Event 381
+=======Event 382
+=======Event 383
+=======Event 384
+=======Event 385
+=======Event 386
+=======Event 387
+=======Event 388
+=======Event 389
+=======Event 390
+=======Event 391
+=======Event 392
+=======Event 393
+=======Event 394
+=======Event 395
+=======Event 396
+=======Event 397
+=======Event 398
+=======Event 399
+=======Event 400
+=======Event 401
+=======Event 402
+=======Event 403
+=======Event 404
+=======Event 405
+=======Event 406
+=======Event 407
+=======Event 408
+=======Event 409
+=======Event 410
+=======Event 411
+=======Event 412
+=======Event 413
+=======Event 414
+=======Event 415
+=======Event 416
+=======Event 417
+=======Event 418
+=======Event 419
+=======Event 420
+=======Event 421
+=======Event 422
+=======Event 423
+=======Event 424
+=======Event 425
+=======Event 426
+=======Event 427
+=======Event 428
+=======Event 429
+=======Event 430
+=======Event 431
+=======Event 432
+=======Event 433
+=======Event 434
+=======Event 435
+=======Event 436
+=======Event 437
+=======Event 438
+=======Event 439
+=======Event 440
+=======Event 441
+=======Event 442
+=======Event 443
+=======Event 444
+=======Event 445
+=======Event 446
+=======Event 447
+=======Event 448
+=======Event 449
+=======Event 450
+=======Event 451
+=======Event 452
+=======Event 453
+=======Event 454
+=======Event 455
+=======Event 456
+=======Event 457
+=======Event 458
+=======Event 459
+=======Event 460
+=======Event 461
+=======Event 462
+=======Event 463
+=======Event 464
+=======Event 465
+=======Event 466
+=======Event 467
+=======Event 468
+=======Event 469
+=======Event 470
+=======Event 471
+=======Event 472
+=======Event 473
+=======Event 474
+=======Event 475
+=======Event 476
+=======Event 477
+=======Event 478
+=======Event 479
+=======Event 480
+=======Event 481
+=======Event 482
+=======Event 483
+=======Event 484
+=======Event 485
+=======Event 486
+=======Event 487
+=======Event 488
+=======Event 489
+=======Event 490
+=======Event 491
+=======Event 492
+=======Event 493
+=======Event 494
+=======Event 495
+=======Event 496
+=======Event 497
+=======Event 498
+=======Event 499
+=======Event 500
+=======Event 501
+=======Event 502
+=======Event 503
+=======Event 504
+=======Event 505
+=======Event 506
+=======Event 507
+=======Event 508
+=======Event 509
+=======Event 510
+=======Event 511
+=======Event 512
+=======Event 513
+=======Event 514
+=======Event 515
+=======Event 516
+=======Event 517
+=======Event 518
+=======Event 519
+=======Event 520
+=======Event 521
+=======Event 522
+=======Event 523
+=======Event 524
+=======Event 525
+=======Event 526
+=======Event 527
+=======Event 528
+=======Event 529
+=======Event 530
+=======Event 531
+=======Event 532
+=======Event 533
+=======Event 534
+=======Event 535
+=======Event 536
+=======Event 537
+=======Event 538
+=======Event 539
+=======Event 540
+=======Event 541
+=======Event 542
+=======Event 543
+=======Event 544
+=======Event 545
+=======Event 546
+=======Event 547
+=======Event 548
+=======Event 549
+=======Event 550
+=======Event 551
+=======Event 552
+=======Event 553
+=======Event 554
+=======Event 555
+=======Event 556
+=======Event 557
+=======Event 558
+=======Event 559
+=======Event 560
+=======Event 561
+=======Event 562
+=======Event 563
+=======Event 564
+=======Event 565
+=======Event 566
+=======Event 567
+=======Event 568
+=======Event 569
+=======Event 570
+=======Event 571
+=======Event 572
+=======Event 573
+=======Event 574
+=======Event 575
+=======Event 576
+=======Event 577
+=======Event 578
+=======Event 579
+=======Event 580
+=======Event 581
+=======Event 582
+=======Event 583
+=======Event 584
+=======Event 585
+=======Event 586
+=======Event 587
+=======Event 588
+=======Event 589
+=======Event 590
+=======Event 591
+=======Event 592
+=======Event 593
+=======Event 594
+=======Event 595
+=======Event 596
+=======Event 597
+=======Event 598
+=======Event 599
+=======Event 600
+=======Event 601
+=======Event 602
+=======Event 603
+=======Event 604
+=======Event 605
+=======Event 606
+=======Event 607
+=======Event 608
+=======Event 609
+=======Event 610
+=======Event 611
+=======Event 612
+=======Event 613
+=======Event 614
+=======Event 615
+=======Event 616
+=======Event 617
+=======Event 618
+=======Event 619
+=======Event 620
+=======Event 621
+=======Event 622
+=======Event 623
+=======Event 624
+=======Event 625
+=======Event 626
+=======Event 627
+=======Event 628
+=======Event 629
+=======Event 630
+=======Event 631
+=======Event 632
+=======Event 633
+=======Event 634
+=======Event 635
+=======Event 636
+=======Event 637
+=======Event 638
+=======Event 639
+=======Event 640
+=======Event 641
+=======Event 642
+=======Event 643
+=======Event 644
+=======Event 645
+=======Event 646
+=======Event 647
+=======Event 648
+=======Event 649
+=======Event 650
+=======Event 651
+=======Event 652
+=======Event 653
+=======Event 654
+=======Event 655
+=======Event 656
+=======Event 657
+=======Event 658
+=======Event 659
+=======Event 660
+=======Event 661
+=======Event 662
+=======Event 663
+=======Event 664
+=======Event 665
+=======Event 666
+=======Event 667
+=======Event 668
+=======Event 669
+=======Event 670
+=======Event 671
+=======Event 672
+=======Event 673
+=======Event 674
+=======Event 675
+=======Event 676
+=======Event 677
+=======Event 678
+=======Event 679
+=======Event 680
+=======Event 681
+=======Event 682
+=======Event 683
+=======Event 684
+=======Event 685
+=======Event 686
+=======Event 687
+=======Event 688
+=======Event 689
+=======Event 690
+=======Event 691
+=======Event 692
+=======Event 693
+=======Event 694
+=======Event 695
+=======Event 696
+=======Event 697
+=======Event 698
+=======Event 699
+=======Event 700
+=======Event 701
+=======Event 702
+=======Event 703
+=======Event 704
+=======Event 705
+=======Event 706
+=======Event 707
+=======Event 708
+=======Event 709
+=======Event 710
+=======Event 711
+=======Event 712
+=======Event 713
+=======Event 714
+=======Event 715
+=======Event 716
+=======Event 717
+=======Event 718
+=======Event 719
+=======Event 720
+=======Event 721
+=======Event 722
+=======Event 723
+=======Event 724
+=======Event 725
+=======Event 726
+=======Event 727
+=======Event 728
+=======Event 729
+=======Event 730
+=======Event 731
+=======Event 732
+=======Event 733
+=======Event 734
+=======Event 735
+=======Event 736
+=======Event 737
+=======Event 738
+=======Event 739
+=======Event 740
+=======Event 741
+=======Event 742
+=======Event 743
+=======Event 744
+=======Event 745
+=======Event 746
+=======Event 747
+=======Event 748
+=======Event 749
+=======Event 750
+=======Event 751
+=======Event 752
+=======Event 753
+=======Event 754
+=======Event 755
+=======Event 756
+=======Event 757
+=======Event 758
+=======Event 759
+=======Event 760
+=======Event 761
+=======Event 762
+=======Event 763
+=======Event 764
+=======Event 765
+=======Event 766
+=======Event 767
+=======Event 768
+=======Event 769
+=======Event 770
+=======Event 771
+=======Event 772
+=======Event 773
+=======Event 774
+=======Event 775
+=======Event 776
+=======Event 777
+=======Event 778
+=======Event 779
+=======Event 780
+=======Event 781
+=======Event 782
+=======Event 783
+=======Event 784
+=======Event 785
+=======Event 786
+=======Event 787
+=======Event 788
+=======Event 789
+=======Event 790
+=======Event 791
+=======Event 792
+=======Event 793
+=======Event 794
+=======Event 795
+=======Event 796
+=======Event 797
+=======Event 798
+=======Event 799
+=======Event 800
+=======Event 801
+=======Event 802
+=======Event 803
+=======Event 804
+=======Event 805
+=======Event 806
+=======Event 807
+=======Event 808
+=======Event 809
+=======Event 810
+=======Event 811
+=======Event 812
+=======Event 813
+=======Event 814
+=======Event 815
+=======Event 816
+=======Event 817
+=======Event 818
+=======Event 819
+=======Event 820
+=======Event 821
+=======Event 822
+=======Event 823
+=======Event 824
+=======Event 825
+=======Event 826
+=======Event 827
+=======Event 828
+=======Event 829
+=======Event 830
+=======Event 831
+=======Event 832
+=======Event 833
+=======Event 834
+=======Event 835
+=======Event 836
+=======Event 837
+=======Event 838
+=======Event 839
+=======Event 840
+=======Event 841
+=======Event 842
+=======Event 843
+=======Event 844
+=======Event 845
+=======Event 846
+=======Event 847
+=======Event 848
+=======Event 849
+=======Event 850
+=======Event 851
+=======Event 852
+=======Event 853
+=======Event 854
+=======Event 855
+=======Event 856
+=======Event 857
+=======Event 858
+=======Event 859
+=======Event 860
+=======Event 861
+=======Event 862
+=======Event 863
+=======Event 864
+=======Event 865
+=======Event 866
+=======Event 867
+=======Event 868
+=======Event 869
+=======Event 870
+=======Event 871
+=======Event 872
+=======Event 873
+=======Event 874
+=======Event 875
+=======Event 876
+=======Event 877
+=======Event 878
+=======Event 879
+=======Event 880
+=======Event 881
+=======Event 882
+=======Event 883
+=======Event 884
+=======Event 885
+=======Event 886
+=======Event 887
+=======Event 888
+=======Event 889
+=======Event 890
+=======Event 891
+=======Event 892
+=======Event 893
+=======Event 894
+=======Event 895
+=======Event 896
+=======Event 897
+=======Event 898
+=======Event 899
+=======Event 900
+=======Event 901
+=======Event 902
+=======Event 903
+=======Event 904
+=======Event 905
+=======Event 906
+=======Event 907
+=======Event 908
+=======Event 909
+=======Event 910
+=======Event 911
+=======Event 912
+=======Event 913
+=======Event 914
+=======Event 915
+=======Event 916
+=======Event 917
+=======Event 918
+=======Event 919
+=======Event 920
+=======Event 921
+=======Event 922
+=======Event 923
+=======Event 924
+=======Event 925
+=======Event 926
+=======Event 927
+=======Event 928
+=======Event 929
+=======Event 930
+=======Event 931
+=======Event 932
+=======Event 933
+=======Event 934
+=======Event 935
+=======Event 936
+=======Event 937
+=======Event 938
+=======Event 939
+=======Event 940
+=======Event 941
+=======Event 942
+=======Event 943
+=======Event 944
+=======Event 945
+=======Event 946
+=======Event 947
+=======Event 948
+=======Event 949
+=======Event 950
+=======Event 951
+=======Event 952
+=======Event 953
+=======Event 954
+=======Event 955
+=======Event 956
+=======Event 957
+=======Event 958
+=======Event 959
+=======Event 960
+=======Event 961
+=======Event 962
+=======Event 963
+=======Event 964
+=======Event 965
+=======Event 966
+=======Event 967
+=======Event 968
+=======Event 969
+=======Event 970
+=======Event 971
+=======Event 972
+=======Event 973
+=======Event 974
+=======Event 975
+=======Event 976
+=======Event 977
+=======Event 978
+=======Event 979
+=======Event 980
+=======Event 981
+=======Event 982
+=======Event 983
+=======Event 984
+=======Event 985
+=======Event 986
+=======Event 987
+=======Event 988
+=======Event 989
+=======Event 990
+=======Event 991
+=======Event 992
+=======Event 993
+=======Event 994
+=======Event 995
+=======Event 996
+=======Event 997
+=======Event 998
+=======Event 999
+G4 kernel has come to Quit state.
+UserDetectorConstruction deleted.
+UserPhysicsList deleted.
+UserActionInitialization deleted.
+UserRunAction deleted.
+UserPrimaryGenerator deleted.
+RunManager is deleting RunManagerKernel.
+G4SDManager deleted.
+EventManager deleted.
+Units table cleared.
+TransportationManager deleted.
+Total navigation history collections cleaned: 10
+================== Deleting memory pools ===================
+Pool ID '20G4NavigationLevelRep', size : 0.0135 MB
+Pool ID '24G4ReferenceCountedHandleIvE', size : 0.000961 MB
+Pool ID '7G4Event', size : 0.000961 MB
+Pool ID '15G4PrimaryVertex', size : 0.000961 MB
+Pool ID '17G4PrimaryParticle', size : 0.000961 MB
+Pool ID '15G4HCofThisEvent', size : 0.000961 MB
+Pool ID '17G4DynamicParticle', size : 0.025 MB
+Pool ID '7G4Track', size : 0.05 MB
+Pool ID '18G4TouchableHistory', size : 0.000961 MB
+Pool ID '15G4CountedObjectIvE', size : 0.000961 MB
+Number of memory pools allocated: 10; of which, static: 0
+Dynamic pools deleted: 10 / Total memory freed: 0.095 MB
+============================================================
+G4Allocator objects are deleted.
+UImanager deleted.
+StateManager deleted.
+RunManagerKernel is deleted. Good bye :)

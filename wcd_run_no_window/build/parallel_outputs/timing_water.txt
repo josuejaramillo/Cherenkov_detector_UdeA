@@ -1,40 +1,112 @@
 tiempo seed 2: 
-real	40m4,449s
-user	36m35,597s
-sys	0m2,325s
-tiempo seed 5: 
-real	40m29,088s
-user	36m54,723s
-sys	0m2,631s
-tiempo seed 6: 
-real	40m52,356s
-user	37m22,493s
-sys	0m2,592s
+real	16m17,859s
+user	16m13,445s
+sys	0m0,843s
 tiempo seed 1: 
-real	40m55,707s
-user	37m22,045s
-sys	0m2,067s
-tiempo seed 3: 
-real	40m58,223s
-user	37m28,780s
-sys	0m2,350s
+real	16m24,646s
+user	16m20,302s
+sys	0m0,739s
+tiempo seed 2: 
+real	13m57,459s
+user	13m53,619s
+sys	0m0,344s
+tiempo seed 1: 
+real	14m10,675s
+user	14m7,871s
+sys	0m0,560s
 tiempo seed 8: 
-real	40m58,766s
-user	37m22,197s
-sys	0m2,393s
+real	39m59,465s
+user	37m29,510s
+sys	0m1,508s
+tiempo seed 2: 
+real	40m5,449s
+user	37m28,480s
+sys	0m1,238s
+tiempo seed 3: 
+real	40m18,350s
+user	37m48,107s
+sys	0m1,262s
+tiempo seed 6: 
+real	40m19,353s
+user	37m43,634s
+sys	0m1,218s
 tiempo seed 4: 
-real	40m58,968s
-user	37m30,994s
-sys	0m2,497s
+real	40m22,782s
+user	37m48,585s
+sys	0m1,187s
+tiempo seed 1: 
+real	40m24,149s
+user	37m48,753s
+sys	0m1,040s
 tiempo seed 7: 
-real	41m16,336s
-user	37m44,580s
-sys	0m2,179s
-tiempo seed 9: 
-real	15m18,169s
-user	15m11,203s
-sys	0m0,800s
+real	40m31,387s
+user	37m56,713s
+sys	0m1,131s
+tiempo seed 5: 
+real	40m32,783s
+user	37m52,478s
+sys	0m1,036s
+tiempo seed 15: 
+real	39m21,578s
+user	37m17,354s
+sys	0m0,604s
+tiempo seed 13: 
+real	39m30,561s
+user	37m23,020s
+sys	0m0,589s
+tiempo seed 11: 
+real	39m33,392s
+user	37m28,761s
+sys	0m0,664s
 tiempo seed 10: 
-real	15m10,904s
-user	15m6,558s
-sys	0m0,723s
+real	39m43,408s
+user	37m35,408s
+sys	0m0,604s
+tiempo seed 14: 
+real	39m45,563s
+user	37m37,977s
+sys	0m0,580s
+tiempo seed 9: 
+real	39m52,368s
+user	37m39,719s
+sys	0m0,652s
+tiempo seed 16: 
+real	39m53,233s
+user	37m44,240s
+sys	0m0,549s
+tiempo seed 12: 
+real	39m55,552s
+user	37m47,680s
+sys	0m0,640s
+tiempo seed 22: 
+real	39m5,720s
+user	37m2,069s
+sys	0m0,600s
+tiempo seed 23: 
+real	39m7,342s
+user	36m55,205s
+sys	0m0,656s
+tiempo seed 18: 
+real	39m11,727s
+user	37m7,931s
+sys	0m0,573s
+tiempo seed 20: 
+real	39m19,774s
+user	37m14,246s
+sys	0m0,672s
+tiempo seed 19: 
+real	39m30,328s
+user	37m22,678s
+sys	0m0,537s
+tiempo seed 17: 
+real	39m45,867s
+user	37m31,801s
+sys	0m0,624s
+tiempo seed 21: 
+real	40m1,072s
+user	37m57,046s
+sys	0m0,700s
+tiempo seed 24: 
+real	40m4,128s
+user	37m56,622s
+sys	0m0,569s

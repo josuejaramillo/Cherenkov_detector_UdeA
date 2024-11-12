@@ -282,7 +282,7 @@ NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
 
 G4OpticalSurface: data file /home/josue/Geant4/geant4-v10.7.4-install/share/Geant4-10.7.4/data/RealSurface2.2/GroundTyvek.z successfully read in.
 LUT - data file: GroundTyvek.z read in! 
-Water Surface G4MaterialPropertiesTable
+Colloid Surface G4MaterialPropertiesTable
 0: RINDEX
 1e-06   1.5
 2e-06   1.5
@@ -936,7 +936,6 @@ Index : 3     used in the geometry : Yes
 =======Event 331
 =======Event 332
 =======Event 333
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 334
 =======Event 335
 =======Event 336
@@ -1142,7 +1141,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 536
 =======Event 537
 =======Event 538
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 539
 =======Event 540
 =======Event 541
@@ -1261,7 +1259,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 654
 =======Event 655
 =======Event 656
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 657
 =======Event 658
 =======Event 659
@@ -1477,7 +1474,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 869
 =======Event 870
 =======Event 871
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 872
 =======Event 873
 =======Event 874
@@ -1626,11 +1622,11 @@ Pool ID '15G4PrimaryVertex', size : 0.000961 MB
 Pool ID '17G4PrimaryParticle', size : 0.000961 MB
 Pool ID '15G4HCofThisEvent', size : 0.000961 MB
 Pool ID '17G4DynamicParticle', size : 0.024 MB
-Pool ID '7G4Track', size : 0.0481 MB
+Pool ID '7G4Track', size : 0.0471 MB
 Pool ID '18G4TouchableHistory', size : 0.000961 MB
 Pool ID '15G4CountedObjectIvE', size : 0.000961 MB
 Number of memory pools allocated: 10; of which, static: 0
-Dynamic pools deleted: 10 / Total memory freed: 0.088 MB
+Dynamic pools deleted: 10 / Total memory freed: 0.087 MB
 ============================================================
 G4Allocator objects are deleted.
 UImanager deleted.

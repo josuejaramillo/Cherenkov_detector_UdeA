@@ -282,7 +282,7 @@ NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
 
 G4OpticalSurface: data file /home/josue/Geant4/geant4-v10.7.4-install/share/Geant4-10.7.4/data/RealSurface2.2/GroundTyvek.z successfully read in.
 LUT - data file: GroundTyvek.z read in! 
-Water Surface G4MaterialPropertiesTable
+Colloid Surface G4MaterialPropertiesTable
 0: RINDEX
 1e-06   1.5
 2e-06   1.5
@@ -667,7 +667,6 @@ Index : 3     used in the geometry : Yes
 =======Event 62
 =======Event 63
 =======Event 64
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 65
 =======Event 66
 =======Event 67
@@ -827,7 +826,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 221
 =======Event 222
 =======Event 223
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 224
 =======Event 225
 =======Event 226
@@ -1286,14 +1284,15 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 679
 =======Event 680
 =======Event 681
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 682
 =======Event 683
 =======Event 684
 =======Event 685
 =======Event 686
 =======Event 687
+Límite de 10000 fotones alcanzado, pasando al siguiente evento.
 =======Event 688
+El evento ha sido abortado, no se guardan datos.
 =======Event 689
 =======Event 690
 =======Event 691
@@ -1312,7 +1311,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 704
 =======Event 705
 =======Event 706
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 707
 =======Event 708
 =======Event 709
@@ -1349,7 +1347,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 740
 =======Event 741
 =======Event 742
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 743
 =======Event 744
 =======Event 745
@@ -1391,7 +1388,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 781
 =======Event 782
 =======Event 783
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 784
 =======Event 785
 =======Event 786
@@ -1423,7 +1419,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 812
 =======Event 813
 =======Event 814
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 815
 =======Event 816
 =======Event 817
@@ -1456,7 +1451,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 844
 =======Event 845
 =======Event 846
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 847
 =======Event 848
 =======Event 849
@@ -1548,7 +1542,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 935
 =======Event 936
 =======Event 937
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 938
 =======Event 939
 =======Event 940
@@ -1558,7 +1551,6 @@ Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 944
 =======Event 945
 =======Event 946
-Límite de 1000 fotones alcanzado, pasando al siguiente evento.
 =======Event 947
 =======Event 948
 =======Event 949
@@ -1625,18 +1617,18 @@ Units table cleared.
 TransportationManager deleted.
 Total navigation history collections cleaned: 8
 ================== Deleting memory pools ===================
-Pool ID '20G4NavigationLevelRep', size : 0.00961 MB
+Pool ID '20G4NavigationLevelRep', size : 0.0106 MB
 Pool ID '24G4ReferenceCountedHandleIvE', size : 0.000961 MB
 Pool ID '7G4Event', size : 0.000961 MB
 Pool ID '15G4PrimaryVertex', size : 0.000961 MB
 Pool ID '17G4PrimaryParticle', size : 0.000961 MB
 Pool ID '15G4HCofThisEvent', size : 0.000961 MB
-Pool ID '17G4DynamicParticle', size : 0.024 MB
-Pool ID '7G4Track', size : 0.0481 MB
+Pool ID '17G4DynamicParticle', size : 0.025 MB
+Pool ID '7G4Track', size : 0.05 MB
 Pool ID '18G4TouchableHistory', size : 0.000961 MB
 Pool ID '15G4CountedObjectIvE', size : 0.000961 MB
 Number of memory pools allocated: 10; of which, static: 0
-Dynamic pools deleted: 10 / Total memory freed: 0.088 MB
+Dynamic pools deleted: 10 / Total memory freed: 0.092 MB
 ============================================================
 G4Allocator objects are deleted.
 UImanager deleted.
