@@ -1,0 +1,80 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/josue/Desktop/Avances simulacion/Avances/wcd_run_no_window/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0f32f/fast && /usr/bin/make -f CMakeFiles/cmTC_0f32f.dir/build.make CMakeFiles/cmTC_0f32f.dir/build
+make[1]: Entering directory '/home/josue/Desktop/Avances simulacion/Avances/wcd_run_no_window/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0f32f.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_0f32f.dir/src.c.o   -c "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_no_window/build/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_0f32f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f32f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_0f32f.dir/src.c.o  -o cmTC_0f32f 
+/usr/bin/ld: CMakeFiles/cmTC_0f32f.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_0f32f.dir/build.make:87: cmTC_0f32f] Error 1
+make[1]: Leaving directory '/home/josue/Desktop/Avances simulacion/Avances/wcd_run_no_window/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_0f32f/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cf6cc/fast && /usr/bin/make -f CMakeFiles/cmTC_cf6cc.dir/build.make CMakeFiles/cmTC_cf6cc.dir/build
+make[1]: Entering directory '/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cf6cc.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_cf6cc.dir/src.c.o   -c "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_cf6cc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cf6cc.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_cf6cc.dir/src.c.o  -o cmTC_cf6cc 
+/usr/bin/ld: CMakeFiles/cmTC_cf6cc.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_cf6cc.dir/build.make:87: cmTC_cf6cc] Error 1
+make[1]: Leaving directory '/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_cf6cc/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

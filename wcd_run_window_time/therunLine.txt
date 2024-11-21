@@ -1,0 +1,1 @@
+clear; rm -rf ../flux-mute-build/*; cmake -DGeant4_DIR=~/Documents/laboral/software/geant4.10.3-install/lib/Geant4-10.3.0/ ../flux-mute/; make; ./fmute input.in > kk.dat 

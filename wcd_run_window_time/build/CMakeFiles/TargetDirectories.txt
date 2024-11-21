@@ -1,0 +1,8 @@
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/install/local.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/install.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/list_install_components.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/rebuild_cache.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/edit_cache.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/install/strip.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/wcd-pmt-2.dir
+/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/wcd.dir
