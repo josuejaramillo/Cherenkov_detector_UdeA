@@ -35,16 +35,26 @@
 #include "StackingAction.hh"
 #include "SteppingVerbose.hh"
 #include "UserEventAction.hh"
-#include "PrimaryGeneratorAction_Ascii.hh"
+
+#include "ParticleSource.hh"
 
 #include "TrackingAction.hh"
 #include "G4RunManager.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ActionInitialization::ActionInitialization()
- : G4VUserActionInitialization()
+ActionInitialization::ActionInitialization(const std::string& nombreArchivo)
+ : G4VUserActionInitialization(), fNombreArchivoSalida(nombreArchivo)
 {
-   //G4cout << "...ActionInitialization..." << G4endl;
+  // Extraer la semilla del nombre del archivo
+   size_t pos = fNombreArchivoSalida.find_last_of("_");
+   if (pos != std::string::npos) {
+       // Extraer la parte del nombre que contiene la semilla
+       std::string seedStr = fNombreArchivoSalida.substr(pos + 1);
+       fSeed = std::stoi(seedStr); // Convertir el valor a entero
+   } else {
+       // Si no se encuentra una semilla, establecer una predeterminada
+       fSeed = 12345;  // Semilla predeterminada
+   }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -56,7 +66,7 @@ ActionInitialization::~ActionInitialization()
 
 void ActionInitialization::BuildForMaster() const
 {
-  SetUserAction(new RunAction());
+  SetUserAction(new RunAction(fNombreArchivoSalida));
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -64,11 +74,11 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
 //  SetUserAction(new PrimaryGeneratorAction());
-  SetUserAction(new PrimaryGeneratorAction_Ascii()); //Generate particles from txt
+  SetUserAction(new ParticleSource(fSeed)); //Generate particles from distribution
   SetUserAction(new SteppingAction());
   SetUserAction(new StackingAction());
 
-  auto* runAction = new RunAction();
+  auto* runAction = new RunAction(fNombreArchivoSalida);
   SetUserAction(runAction);
 
   auto* eventAction = new UserEventAction(runAction->outFile);

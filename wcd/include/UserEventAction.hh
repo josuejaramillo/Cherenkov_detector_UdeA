@@ -31,10 +31,14 @@ class UserEventAction : public G4UserEventAction
     virtual void BeginOfEventAction(const G4Event *event);
     virtual void EndOfEventAction(const G4Event *event);
     void AddPhotonCount() { fPhotonCount++; } //Contador de fotones PMT
+    int GetPhotonCount(){return fPhotonCount;}
+    
+    void AddPhotonEnergy(G4double energy) {fTotalPhotonEnergy += energy;}
     static G4int GetEventId() { return fEventId; }
   private:
     std::ofstream& outFile;  // Referencia al archivo
     G4int fPhotonCount;
+    G4double fTotalPhotonEnergy;
     static G4int fEventId; 
 };
 

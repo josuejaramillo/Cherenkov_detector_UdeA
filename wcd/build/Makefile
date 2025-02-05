@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd"
+CMAKE_SOURCE_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd/build"
+CMAKE_BINARY_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/josue/Desktop/Avances simulacion/Avances/wcd/build/CMakeFiles" "/home/josue/Desktop/Avances simulacion/Avances/wcd/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/josue/Desktop/Avances simulacion/Avances/wcd/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -317,6 +317,33 @@ src/PMTSD.cc.s:
 	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/PMTSD.cc.s
 .PHONY : src/PMTSD.cc.s
 
+src/ParticleSource.o: src/ParticleSource.cc.o
+
+.PHONY : src/ParticleSource.o
+
+# target to build an object file
+src/ParticleSource.cc.o:
+	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/ParticleSource.cc.o
+.PHONY : src/ParticleSource.cc.o
+
+src/ParticleSource.i: src/ParticleSource.cc.i
+
+.PHONY : src/ParticleSource.i
+
+# target to preprocess a source file
+src/ParticleSource.cc.i:
+	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/ParticleSource.cc.i
+.PHONY : src/ParticleSource.cc.i
+
+src/ParticleSource.s: src/ParticleSource.cc.s
+
+.PHONY : src/ParticleSource.s
+
+# target to generate assembly for a file
+src/ParticleSource.cc.s:
+	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/ParticleSource.cc.s
+.PHONY : src/ParticleSource.cc.s
+
 src/PhysicsList.o: src/PhysicsList.cc.o
 
 .PHONY : src/PhysicsList.o
@@ -370,33 +397,6 @@ src/PhysicsListMessenger.s: src/PhysicsListMessenger.cc.s
 src/PhysicsListMessenger.cc.s:
 	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/PhysicsListMessenger.cc.s
 .PHONY : src/PhysicsListMessenger.cc.s
-
-src/PrimaryGeneratorAction_Ascii.o: src/PrimaryGeneratorAction_Ascii.cc.o
-
-.PHONY : src/PrimaryGeneratorAction_Ascii.o
-
-# target to build an object file
-src/PrimaryGeneratorAction_Ascii.cc.o:
-	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/PrimaryGeneratorAction_Ascii.cc.o
-.PHONY : src/PrimaryGeneratorAction_Ascii.cc.o
-
-src/PrimaryGeneratorAction_Ascii.i: src/PrimaryGeneratorAction_Ascii.cc.i
-
-.PHONY : src/PrimaryGeneratorAction_Ascii.i
-
-# target to preprocess a source file
-src/PrimaryGeneratorAction_Ascii.cc.i:
-	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/PrimaryGeneratorAction_Ascii.cc.i
-.PHONY : src/PrimaryGeneratorAction_Ascii.cc.i
-
-src/PrimaryGeneratorAction_Ascii.s: src/PrimaryGeneratorAction_Ascii.cc.s
-
-.PHONY : src/PrimaryGeneratorAction_Ascii.s
-
-# target to generate assembly for a file
-src/PrimaryGeneratorAction_Ascii.cc.s:
-	$(MAKE) -f CMakeFiles/wcd.dir/build.make CMakeFiles/wcd.dir/src/PrimaryGeneratorAction_Ascii.cc.s
-.PHONY : src/PrimaryGeneratorAction_Ascii.cc.s
 
 src/PrimarySpectrum.o: src/PrimarySpectrum.cc.o
 
@@ -670,15 +670,15 @@ help:
 	@echo "... src/PMTSD.o"
 	@echo "... src/PMTSD.i"
 	@echo "... src/PMTSD.s"
+	@echo "... src/ParticleSource.o"
+	@echo "... src/ParticleSource.i"
+	@echo "... src/ParticleSource.s"
 	@echo "... src/PhysicsList.o"
 	@echo "... src/PhysicsList.i"
 	@echo "... src/PhysicsList.s"
 	@echo "... src/PhysicsListMessenger.o"
 	@echo "... src/PhysicsListMessenger.i"
 	@echo "... src/PhysicsListMessenger.s"
-	@echo "... src/PrimaryGeneratorAction_Ascii.o"
-	@echo "... src/PrimaryGeneratorAction_Ascii.i"
-	@echo "... src/PrimaryGeneratorAction_Ascii.s"
 	@echo "... src/PrimarySpectrum.o"
 	@echo "... src/PrimarySpectrum.i"
 	@echo "... src/PrimarySpectrum.s"

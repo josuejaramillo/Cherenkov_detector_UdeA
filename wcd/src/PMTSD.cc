@@ -1,3 +1,5 @@
+// Geant4 Libraries
+//
 #include "PMTSD.hh"
 #include "G4Step.hh"
 #include "G4Track.hh"
@@ -24,37 +26,55 @@ G4bool PMTSD::ProcessHits(G4Step* step, G4TouchableHistory*) {
         return false;
     }
 
-    // Obtener el UserEventAction para actualizar el conteo de fotones
+    // Obtener el UserEventAction para actualizar el conteo de fotones y la energía
     auto eventAction = const_cast<UserEventAction*>(static_cast<const UserEventAction*>(G4RunManager::GetRunManager()->GetUserEventAction()));
     if (!eventAction) {
         return false; // Si no se obtiene, termina
     }
-
     // Contar los fotones
-    eventAction->AddPhotonCount(); // Aquí asumimos que has definido AddPhoton() en UserEventAction para aumentar el contador
-    
+    eventAction->AddPhotonCount(); // Aumentar el contador de fotones
+	if (eventAction->GetPhotonCount() > 100000) {
+	G4cout << "Límite de fotones alcanzado, pasando al siguiente evento." << G4endl;
+        G4RunManager::GetRunManager()->AbortEvent();  // Detiene el evento actual y pasa al siguiente
+        return false;
+    }
+    // Obtener la energía del fotón y agregarla al total
+    G4double photonEnergy = step->GetTrack()->GetKineticEnergy();
+    eventAction->AddPhotonEnergy(photonEnergy); // Acumular energía depositada
+
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     // Obtener información del fotón detectado
-    G4Track* track = step->GetTrack();
-    int photonTrackId = track->GetTrackID();
-    float photonEnergy = track->GetKineticEnergy();
+    // G4Track* track = step->GetTrack();
+    // int photonTrackId = track->GetTrackID();
     int eventId = UserEventAction::GetEventId();  // Obtener el ID del evento actual
-    G4ThreeVector photonMomentum = track->GetMomentum();
-    double px = photonMomentum.x();
-    double py = photonMomentum.y();
-    double pz = photonMomentum.z();
+    // G4ThreeVector photonMomentum = track->GetMomentum();
+    // double px = photonMomentum.x();
+    // double py = photonMomentum.y();
+    // double pz = photonMomentum.z();
+
+    // G4ThreeVector photonPosition = track->GetPosition();
+    // double x = photonPosition.x();
+    // double y = photonPosition.y();
+    // double z = photonPosition.z();
 
     // Llenar los ntuples con la información del fotón
-    analysisManager->FillNtupleIColumn(1, 0, eventId);          // ID del evento
-    analysisManager->FillNtupleIColumn(1, 1, photonTrackId);    // Track ID del fotón
-    analysisManager->FillNtupleDColumn(1, 2, px);     // Px
-    analysisManager->FillNtupleDColumn(1, 3, py);     // Py
-    analysisManager->FillNtupleDColumn(1, 4, pz);     // Pz
-    analysisManager->FillNtupleDColumn(1, 5, photonEnergy);     // Energía del fotón
+     // Convertir la energía a longitud de onda
+    const G4double h = 4.135667696e-15;  // Constante de Planck en eV·s
+    const G4double c = 3.0e8;  // Velocidad de la luz en m/s
+
+    // Fórmula para calcular la longitud de onda (en metros)
+    G4double photonWavelength = h * c / (photonEnergy*1e6);
+    photonWavelength *= 1e9; //Longitud de onda en nm
+
+    analysisManager->FillNtupleIColumn(0, 0, eventId); 
+    analysisManager->FillNtupleDColumn(0, 1, photonEnergy);     // Energía del fotón
+    analysisManager->FillNtupleDColumn(0, 2, photonWavelength);     // Longitud de onda del fotón
 
     // Escribir los datos al archivo ROOT
-    analysisManager->AddNtupleRow(1); 
-
+    
+    analysisManager->AddNtupleRow(0);
+    step->GetTrack()->SetTrackStatus(fStopAndKill);
     return true; // Hit procesado correctamente
+    
 }

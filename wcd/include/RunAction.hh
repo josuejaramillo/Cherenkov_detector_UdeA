@@ -48,13 +48,15 @@
 class RunAction : public G4UserRunAction
 {
 public:
-  RunAction();
+  RunAction(const std::string& nombreArchivo);
   ~RunAction();
 
   virtual void BeginOfRunAction(const G4Run*);
   virtual void EndOfRunAction(const G4Run*);
 
   std::ofstream outFile;  // Archivo para almacenar la información
+private:
+    std::string fNombreArchivoSalida;
 };
 
 #endif

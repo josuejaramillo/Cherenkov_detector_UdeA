@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd"
+CMAKE_SOURCE_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd/build"
+CMAKE_BINARY_DIR = "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build"
 
 # Utility rule file for wcd-pmt-2.
 
@@ -71,6 +71,6 @@ CMakeFiles/wcd-pmt-2.dir/clean:
 .PHONY : CMakeFiles/wcd-pmt-2.dir/clean
 
 CMakeFiles/wcd-pmt-2.dir/depend:
-	cd "/home/josue/Desktop/Avances simulacion/Avances/wcd/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/josue/Desktop/Avances simulacion/Avances/wcd" "/home/josue/Desktop/Avances simulacion/Avances/wcd" "/home/josue/Desktop/Avances simulacion/Avances/wcd/build" "/home/josue/Desktop/Avances simulacion/Avances/wcd/build" "/home/josue/Desktop/Avances simulacion/Avances/wcd/build/CMakeFiles/wcd-pmt-2.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build" "/home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/build/CMakeFiles/wcd-pmt-2.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/wcd-pmt-2.dir/depend
 

@@ -1,1 +1,0 @@
-rm parallel_outputs/* && ./run_water.sh & ./run_colloid.sh &

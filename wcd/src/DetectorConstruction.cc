@@ -38,7 +38,7 @@ DetectorConstruction::DetectorConstruction()
 {
   G4cout << "...DetectorConstruction..." << G4endl;
   
-  fExpHall_x = fExpHall_y = fExpHall_z = 5500.0*cm;
+  fExpHall_x = fExpHall_y = fExpHall_z = 200.0*cm;
   fTank_x    = fTank_y    = fTank_z    =  60.0*cm;
   
   O = H = C = NULL;
@@ -123,17 +123,7 @@ void DetectorConstruction::DefineMaterials()
         1.e-19*pascal
         );
 
-  // *** TiO2 Colloid ***
-  //
-
-  TiDioxide 
-    = nist->FindOrBuildMaterial("G4_TITANIUM_DIOXIDE");
   
-  TiO2_colloid
-    = new G4Material("TiO2_colloid ", density = 1.002*g/cm3, 2);
-  TiO2_colloid->AddMaterial(water, 99.93*perCent);
-  TiO2_colloid->AddMaterial(TiDioxide, 0.07*perCent);
-
   // *** Hydroxyapatite Colloid ***
   //
 
@@ -182,26 +172,20 @@ void DetectorConstruction::DefineMaterials()
 
 
   G4double refractiveIndex1[] =
-  { 
-    1.32461554, 1.32506502, 1.32550999, 1.32595216,
-    1.32639344, 1.32683587, 1.32728177, 1.32773371, 
-    1.32819464, 1.32866791, 1.32915745, 1.32966784, 
-    1.33020452, 1.330774, 1.33138419, 1.33204473, 
-    1.33276761, 1.33356786, 1.33446457, 1.3354824,
-    1.33665365, 1.33802145, 1.33964455, 1.34160493, 
-    1.3440201,  1.3470643, 1.35100647, 1.35628372, 
-    1.36365569, 1.37457069, 1.39219362, 1.42517179
+  {
+  1.32548669,   1.32592875,   1.32636092,   1.32679534,   1.32700000,   1.32700000,   1.32793651,   1.32800000, 
+  1.32827081,   1.32900000,   1.32900000,   1.32974810,   1.33000000,   1.33007925,   1.33100000,   1.33100000, 
+  1.33156278,   1.33200000,   1.33288495,   1.33305041,   1.33420904,   1.33537643,   1.33653720,   1.33769595, 
+  1.33886081,   1.34104044,   1.34355121,   1.34703875,   1.35154687,   1.35935552,   1.37114869,   1.39586638
   };
   assert(sizeof(refractiveIndex1) == sizeof(photonEnergy));
 
   G4double absorption[] =
   {
-    3.448*m,  4.082*m,  6.329*m,  9.174*m, 12.346*m, 13.889*m,
-    15.152*m, 17.241*m, 18.868*m, 20.000*m, 26.316*m, 35.714*m,
-    45.455*m, 47.619*m, 52.632*m, 52.632*m, 55.556*m, 52.632*m,
-    52.632*m, 47.619*m, 45.455*m, 41.667*m, 37.037*m, 33.333*m,
-    30.000*m, 28.500*m, 27.000*m, 24.500*m, 22.000*m, 19.500*m,
-    17.500*m, 14.500*m 
+  0.014*m,   0.016*m,   0.019*m,   0.024*m,   0.024*m,   0.025*m,   0.063*m,   0.150*m, 
+  0.190*m,   0.271*m,   0.434*m,   0.437*m,   0.385*m,   0.662*m,   1.795*m,   2.657*m, 
+  3.375*m,   4.115*m,   10.358*m,   22.652*m,   33.008*m,   40.019*m,   37.455*m,   28.337*m, 
+  18.017*m,   8.370*m,   3.770*m,   1.998*m,   1.153*m,   0.681*m,   0.393*m,   0.145*m
   };
   assert(sizeof(absorption) == sizeof(photonEnergy));
 
@@ -214,10 +198,10 @@ void DetectorConstruction::DefineMaterials()
         photonEnergy, refractiveIndex1, nEntries)
     ->SetSpline(true);
 
-  myMPT1
-    ->AddProperty("ABSLENGTH", photonEnergy, 
-        absorption, nEntries)
-    ->SetSpline(true);
+  // myMPT1
+  //   ->AddProperty("ABSLENGTH", photonEnergy, 
+  //       absorption, nEntries)
+  //   ->SetSpline(true);
 
 
   G4double energy_water[] = 
@@ -270,20 +254,117 @@ void DetectorConstruction::DefineMaterials()
   // gforward, gbackward, forward backward ratio
   G4double mie_water_const[3]={0.99,0.99,0.8};
 
-  myMPT1
-    ->AddProperty("MIEHG",energy_water,mie_water,numentries_water)
-    ->SetSpline(true);
-  myMPT1
-    ->AddConstProperty("MIEHG_FORWARD",mie_water_const[0]);
-  myMPT1
-    ->AddConstProperty("MIEHG_BACKWARD",mie_water_const[1]);
-  myMPT1
-    ->AddConstProperty("MIEHG_FORWARD_RATIO",mie_water_const[2]);
+  // myMPT1
+  //   ->AddProperty("MIEHG",energy_water,mie_water,numentries_water)
+  //   ->SetSpline(true);
+  // myMPT1
+  //   ->AddConstProperty("MIEHG_FORWARD",mie_water_const[0]);
+  // myMPT1
+  //   ->AddConstProperty("MIEHG_BACKWARD",mie_water_const[1]);
+  // myMPT1
+  //   ->AddConstProperty("MIEHG_FORWARD_RATIO",mie_water_const[2]);
 
   G4cout << "Water G4MaterialPropertiesTable" << G4endl;
   myMPT1->DumpTable();
 
   water->SetMaterialPropertiesTable(myMPT1);
+
+  // *** TiO2 Colloid ***
+  //
+
+  TiDioxide 
+    = nist->FindOrBuildMaterial("G4_TITANIUM_DIOXIDE");
+  
+  TiO2_colloid
+    = new G4Material("TiO2_colloid ", density = 1.002*g/cm3, 2);
+  TiO2_colloid->AddMaterial(water, 70*perCent);
+  TiO2_colloid->AddMaterial(TiDioxide, 30*perCent);
+
+  // TiO2_colloid->AddMaterial(water, 99.93*perCent);
+  // TiO2_colloid->AddMaterial(TiDioxide, 0.07*perCent);
+  // -------------------------
+  // *** TiO2 colloid Propierties ***
+  // -------------------------
+G4double photonEnergy_colloid[] =
+{ 
+  1.127*eV, 1.158*eV, 1.190*eV, 1.224*eV, 
+  1.260*eV, 1.298*eV, 1.339*eV, 1.383*eV, 
+  1.429*eV, 1.478*eV, 1.531*eV, 1.588*eV, 
+  1.650*eV, 1.716*eV, 1.788*eV, 1.866*eV, 
+  1.951*eV, 2.044*eV, 2.147*eV, 2.261*eV, 
+  2.387*eV, 2.529*eV, 2.688*eV, 2.868*eV, 
+  3.075*eV, 3.313*eV, 3.592*eV, 3.922*eV, 
+  4.319*eV, 4.804*eV, 5.413*eV, 6.199*eV
+};
+
+const G4int nEntriesColloid = sizeof(photonEnergy_colloid)/sizeof(G4double);
+
+//Optical properties TiO2 various concentrations
+
+//Concentration 5%
+// G4double refractiveIndex_TiO2[] = 
+// {
+//   1.36327440,   1.36377508,   1.36426929,   1.36477170,   1.36505665,   1.36514909,   1.36616296,   1.36633734, 
+//   1.36672231,   1.36756586,   1.36771522,   1.36861099,   1.36904621,   1.36933505,   1.37047538,   1.37075354, 
+//   1.37162505,   1.37242922,   1.37374415,   1.37445023,   1.37624504,   1.37822290,   1.38042985,   1.38299395, 
+//   1.38617939,   1.39155282,   1.39972318,   1.40977407,   1.41780120,   1.42161419,   1.42168116,   1.43495869
+//   };
+
+//Concentration 10%
+// G4double refractiveIndex_TiO2[] = 
+// {
+//   1.40146827,   1.40202874,   1.40258626,   1.40315806,   1.40352507,   1.40371207,   1.40480474,   1.40509254, 
+//   1.40559422,   1.40655452,   1.40685672,   1.40790333,   1.40852607,   1.40902942,   1.41039420,   1.41095716, 
+//   1.41214463,   1.41332450,   1.41507964,   1.41633975,   1.41878636,   1.42159510,   1.42487539,   1.42888266, 
+//   1.43414572,   1.44280878,   1.45682624,   1.47366264,   1.48521313,   1.48454138,   1.47219790,   1.47369928
+//   };
+
+//Concentration 20%
+// G4double refractiveIndex_TiO2[] = 
+// {
+//   1.47927976,   1.47996419,   1.48065301,   1.48136877,   1.48190646,   1.48229046,   1.48354609,   1.48407016, 
+//   1.48481472,   1.48601739,   1.48663822,   1.48799834,   1.48901185,   1.48996258,   1.49179444,   1.49295192, 
+//   1.49479836,   1.49676250,   1.49943646,   1.50185517,   1.50566438,   1.51021221,   1.51574239,   1.52278057, 
+//   1.53241845,   1.54803343,   1.57448617,   1.60577141,   1.62427209,   1.61241983,   1.57252960,   1.54940591
+//   };
+
+//Concentration 30%
+G4double refractiveIndex_TiO2[] = 
+{
+  1.55934323,   1.56015889,   1.56098679,   1.56185516,   1.56257449,   1.56316872,   1.56459616,   1.56537231, 
+  1.56637559,   1.56783543,   1.56879668,   1.57049008,   1.57192075,   1.57334979,   1.57567919,   1.57747318, 
+  1.58002421,   1.58282813,   1.58648581,   1.59014883,   1.59542075,   1.60183930,   1.60979581,   1.62011325, 
+  1.63450574,   1.65772368,   1.69792698,   1.74521607,   1.77027080,   1.74284302,   1.67068169,   1.62151056
+  };
+
+
+
+
+G4double absorption_TiO2[] =
+{
+  0.01401706*m,   0.01625190*m,   0.01945390*m,   0.02460516*m,   0.02475340*m,   0.02553981*m,   0.06424368*m,   0.15432974*m, 
+  0.19464545*m,   0.27863318*m,   0.44523869*m,   0.44873682*m,   0.39518869*m,   0.67925404*m,   1.83945655*m,   2.71369630*m, 
+  3.41266470*m,   4.02833830*m,   7.87888758*m,   6.65588580*m,   2.35917151*m,   0.57631192*m,   0.11291880*m,   0.01776610*m, 
+  0.00213023*m,   0.00019283*m,   0.00001492*m,   0.00000304*m,   0.00000113*m,   0.00000059*m,   0.00000040*m,   0.00000033*m
+  };
+
+ 
+  G4MaterialPropertiesTable* MPT_TiO2 
+    = new G4MaterialPropertiesTable();
+
+  MPT_TiO2
+    ->AddProperty("RINDEX", 
+        photonEnergy_colloid, refractiveIndex_TiO2, nEntriesColloid)
+    ->SetSpline(true);
+
+  // MPT_TiO2
+  // ->AddProperty("ABSLENGTH", photonEnergy, 
+  //     absorption_TiO2, nEntries)
+  // ->SetSpline(true);
+
+  MPT_TiO2->DumpTable();
+
+  TiO2_colloid->SetMaterialPropertiesTable(MPT_TiO2);
 }
   
 
@@ -294,6 +375,7 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {                        
 
+  
   // ----------------------
   // *** Make Materials ***
   // ----------------------
@@ -354,7 +436,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // R_sup = 137*0.5;
   // R_inf = 90*0.5;
   // h = 125;
-
 
 
   // WCD Tank
@@ -479,17 +560,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   wcd_tank_log //esta es el agua
     = new G4LogicalVolume(wcd_tank,
-        water,
+        TiO2_colloid, //TiO2_colloid, water
         "Tank",
         0,
         0,
         0
         ); 
-
-  G4VisAttributes* visAttributes = new G4VisAttributes(G4Colour(0.0,0.0,1.0, 0.2));  // Azul para el agua
-  visAttributes->SetVisibility(true);
-  visAttributes->SetForceSolid(true); 
-  wcd_tank_log->SetVisAttributes(visAttributes);
 
   G4VPhysicalVolume* wcd_tank_phys
     = new G4PVPlacement(0,
@@ -517,36 +593,38 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   opWaterSurface->SetFinish(groundtyvekair);
   opWaterSurface->SetModel(LUT);
 
-  // new G4LogicalBorderSurface("WaterSurface",
-  //     wcd_tank_phys,
-  //     wcd_thickness_phys, //expHall_phys, //wcd_thickness_phys,
-  //     opWaterSurface
-  //     );
-   
-  // // ----------------------------------------
-  // // Generate & Add Material Properties Table 
-  // // attached to the optical surfaces
-  // // ----------------------------------------
-  // const G4int num = 2;
-  // G4double ephoton[num] = {2.034*eV, 4.136*eV};
+const G4int num = 32;  // Aumentar el número de puntos de energía
+// G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV, 5.0*eV, 5.5*eV, 6.0*eV};
 
-  // // *** OpticalWaterSurface ***
-  // //
-  // G4double refractiveIndex[num] = {1.35, 1.40};
-  // G4double specularLobe[num]    = {0.3, 0.3};
-  // G4double specularSpike[num]   = {0.2, 0.2};
-  // G4double backScatter[num]     = {0.2, 0.2};
-
-const G4int num = 10;  // Aumentar el número de puntos de energía
-G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV, 5.0*eV, 5.5*eV, 6.0*eV};
+G4double ephoton[num] =
+  { 
+    1.127*eV, 1.158*eV, 1.190*eV, 1.224*eV, 
+    1.260*eV, 1.298*eV, 1.339*eV, 1.383*eV, 
+    1.429*eV, 1.478*eV, 1.531*eV, 1.588*eV, 
+    1.650*eV, 1.716*eV, 1.788*eV, 1.866*eV, 
+    1.951*eV, 2.044*eV, 2.147*eV, 2.261*eV, 
+    2.387*eV, 2.529*eV, 2.688*eV, 2.868*eV, 
+    3.075*eV, 3.313*eV, 3.592*eV, 3.922*eV, 
+    4.319*eV, 4.804*eV, 5.413*eV, 6.199*eV
+  };
 
 // Coeficientes de reflexión
-G4double ref = 0.8;
-G4double reflectivity[num]  = {ref, ref, ref, ref, ref, ref, ref, ref, ref, ref};  // 80% de reflexión
-G4double specularLobe[num]  = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Reflexión especular baja
-G4double specularSpike[num] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}; // Sin especularidad
-G4double backScatter[num]   = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Backscatter leve
-G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}; // refractive index tyvek?
+G4double ref = 0.8;  // Reflexión constante
+G4double reflectivity[num]  = {ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref, ref};  // 80% de reflexión
+
+// Reflexión especular y backscatter
+G4double specLobe = 0.2;  // specular lobe
+
+G4double specularLobe[num]  = {specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe, specLobe}; // Reflexión especular baja
+
+G4double specSpike = 0.01;  // specular lobe
+G4double specularSpike[num] = {specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike, specSpike}; // Sin especularidad
+
+G4double bScatter = 0.1;  // backscatter
+G4double backScatter[num]   = {bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter, bScatter}; // Backscatter leve
+
+// Índice de refracción
+G4double refractiveIndex[num] = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}; // Índice de refracción constante, ajustar según la energía
 
 
   G4MaterialPropertiesTable* myST1 
@@ -558,7 +636,7 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
   myST1->AddProperty("SPECULARSPIKECONSTANT", ephoton, specularSpike, num);
   myST1->AddProperty("BACKSCATTERCONSTANT", ephoton, backScatter, num);
 
-  G4cout << "Water Surface G4MaterialPropertiesTable" << G4endl;
+  G4cout << "Colloid Surface G4MaterialPropertiesTable" << G4endl;
   myST1->DumpTable();
 
   opWaterSurface->SetMaterialPropertiesTable(myST1);
@@ -573,44 +651,6 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
                            wcd_inferior_phys, 
                            opWaterSurface);
 
-
-  // Define una nueva superficie óptica para la pintura reflectiva
-// G4OpticalSurface* opReflectivePaintSurface 
-//     = new G4OpticalSurface("ReflectivePaintSurface");
-
-// // Configura el tipo de superficie y su acabado difuso
-// opReflectivePaintSurface->SetType(dielectric_dielectric);  // Para una interfaz entre dieléctricos
-// opReflectivePaintSurface->SetFinish(ground);               // Superficie rugosa, difusa
-// opReflectivePaintSurface->SetModel(unified);               // Modelo óptico general
-
-// // Define las propiedades ópticas
-// const G4int num = 10;  // Aumentar el número de puntos de energía
-// G4double ephoton[num] = {1.0*eV, 2.0*eV, 2.5*eV, 3.0*eV, 3.5*eV, 4.0*eV, 4.5*eV, 5.0*eV, 5.5*eV, 6.0*eV};
-
-// // Coeficientes de reflexión
-// G4double reflectivity[num]  = {0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};  // 80% de reflexión
-// G4double specularLobe[num]  = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Reflexión especular baja
-// G4double specularSpike[num] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}; // Sin especularidad
-// G4double backScatter[num]   = {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05}; // Backscatter leve
-// G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5};  // 80% de reflexión
-
-// // Crear tabla de propiedades para la superficie
-// G4MaterialPropertiesTable* reflectivePaintMPT = new G4MaterialPropertiesTable();
-// reflectivePaintMPT->AddProperty("REFLECTIVITY", ephoton, reflectivity, num);
-// reflectivePaintMPT->AddProperty("SPECULARLOBECONSTANT", ephoton, specularLobe, num);
-// reflectivePaintMPT->AddProperty("SPECULARSPIKECONSTANT", ephoton, specularSpike, num);
-// reflectivePaintMPT->AddProperty("BACKSCATTERCONSTANT", ephoton, backScatter, num);
-// reflectivePaintMPT->AddProperty("RINDEX", ephoton, refractiveIndex, num);
-// // Asigna la tabla de propiedades a la superficie óptica
-// opReflectivePaintSurface->SetMaterialPropertiesTable(reflectivePaintMPT);
-// reflectivePaintMPT->DumpTable();
-
-// new G4LogicalBorderSurface("ReflectivePaintSurface", 
-//                            wcd_tank_phys, 
-//                            wcd_thickness_phys, 
-//                            opReflectivePaintSurface);
-
-// new G4LogicalSkinSurface("ReflectiveSkinSurface",wcd_tank_log, opReflectivePaintSurface);
   // -----------
   // *** PMT ***
   // -----------
@@ -636,12 +676,6 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
   G4double startAngle_pmt = 0.*deg;
   G4double spanningAngle_pmt = 360.*deg;
 
-  // G4double pxSemiAxis = 10.1*cm;
-  // G4double pySemiAxis = 10.1*cm;
-  // G4double pzSemiAxis = 6.5*cm;
-  // G4double pzBottomCut = -pzSemiAxis;
-  // G4double pzTopCut = 0.*cm;
-
   Pmt
     = new G4Tubs("pmt_tube",
         innerRadius_pmt,
@@ -650,15 +684,6 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
         startAngle_pmt,
         spanningAngle_pmt
         );
-
-  // Pmt 
-  //   = new G4Ellipsoid("pmt_tube",
-  //   pxSemiAxis,
-  //   pySemiAxis,
-  //   pzSemiAxis,
-  //   pzBottomCut,
-  //   pzTopCut
-  //   );
 
   Pmt_log
     = new G4LogicalVolume(Pmt
@@ -701,20 +726,6 @@ G4double refractiveIndex[num]  = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1
   auto* pmtSD = new PMTSD("PmtSD");
   sdManager->AddNewDetector(pmtSD);
   Pmt_log->SetSensitiveDetector(pmtSD);
-
-  // *** PMT optical surface ***
-  //
-  //G4OpticalSurface* opPMTsurface 
-  //  = new G4OpticalSurface("PMTsurface");
-
-  //..............Revisar.................
-  //opPMTsurface->SetType(dielectric_LUT); 
-  //opPMTsurface->SetFinish(polished);
-  //opPMTsurface->SetModel(LUT);
-  //......................................
-
-  //new G4LogicalSkinSurface("PMTsurface", Pmt_log, opPMTsurface );
-
 
   return expHall_phys;
 }

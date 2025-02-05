@@ -1,7 +1,7 @@
 // Geant4 Libraries
 //
 #include "G4UserEventAction.hh"
-#include "G4Event.hh" 
+#include "G4Event.hh"
 #include "G4RunManager.hh"
 
 // Local Libraries
@@ -13,69 +13,82 @@
 #include <fstream>
 #include <cmath>
 
-
-UserEventAction::UserEventAction(std::ofstream& output) : outFile(output) {}
+UserEventAction::UserEventAction(std::ofstream& output)
+    : outFile(output), fTotalPhotonEnergy(0.0) {}
 
 UserEventAction::~UserEventAction() {}
 
-
 void UserEventAction::BeginOfEventAction(const G4Event* event)
 {
-
-  
-  // G4cout << "Begin Event: " << event->GetPos() << G4endl;
-  fPhotonCount = 0; // Resetear el contador al inicio del evento
+    fPhotonCount = 0; // Resetear el contador al inicio del evento
+    fTotalPhotonEnergy = 0.0; // Resetear la energía total al inicio del evento
 }
 
 G4int UserEventAction::fEventId = -1;
+
 void UserEventAction::EndOfEventAction(const G4Event* event)
 {
-  fEventId = event->GetEventID();
-  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+    fEventId = event->GetEventID();
+    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+    G4cout << "=======Event " << fEventId << G4endl;
+    // if (!outFile.is_open()) {
+    //     G4cerr << "El archivo de salida no está abierto!" << G4endl;
+    //     return;
+    // }
 
-  G4cout << "---- Event Action ----" << G4endl;
+    for (int i = 0; i < event->GetNumberOfPrimaryVertex(); i++) {
+        G4int nPhotons = PhotonCounter::Instance()->GetPhotonCount();
 
-  // Asegurarse de que el archivo esté abierto
-  if (!outFile.is_open()) {
-    G4cerr << "El archivo de salida no está abierto!" << G4endl;
-    return;
-  }
+        for (int q = 0; q < event->GetPrimaryVertex(i)->GetNumberOfParticle(); q++) {
+            auto primary = event->GetPrimaryVertex(i)->GetPrimary(q);
 
-  for (int i = 0; i < event->GetNumberOfPrimaryVertex(); i++) {
-    G4int nPhotons = PhotonCounter::Instance()->GetPhotonCount();
+            // Obtener las componentes del momento Px, Py, Pz
+            G4double Px = primary->GetPx();
+            G4double Py = primary->GetPy();
+            G4double Pz = primary->GetPz();
 
-    for (int q = 0; q < event->GetPrimaryVertex(i)->GetNumberOfParticle(); q++) {
-      auto primary = event->GetPrimaryVertex(i)->GetPrimary(q);
+            G4double x = event->GetPrimaryVertex(i)->GetX0();
+            G4double y = event->GetPrimaryVertex(i)->GetY0();
+            G4double z = event->GetPrimaryVertex(i)->GetZ0();
 
-      // Obtener las componentes del momento Px, Py, Pz
-      G4double Px = primary->GetPx();
-      G4double Py = primary->GetPy();
-      G4double Pz = primary->GetPz();
+            // Obtener la energía cinética
+            G4double totalEnergy = primary->GetTotalEnergy() / 1000;
 
-      // Obtener la energía cinética
-      G4double kineticEnergy = primary->GetKineticEnergy();
+            // // Escribir la información en el archivo
+            // outFile << fEventId << "\t"  // EventID
+            //         // << primary->GetTrackID() << "\t" // TrackID
+            //         << nPhotons << "\t"  // Número de fotones
+            //         // << Px << "\t"  // Componente Px del momento
+            //         // << Py << "\t"  // Componente Py del momento
+            //         // << Pz << "\t"  // Componente Pz del momento
+            //         // << kineticEnergy << "\t"  // Energía cinética
+            //         << fPhotonCount << "\t" // Número de fotones detectados
+            //         << fTotalPhotonEnergy << "\n"; // Energía total de fotones
 
-      // Escribir la información en el archivo en el orden deseado: EventID, TrackID, nPhotons, Px, Py, Pz, KineticEnergy
-      outFile << fEventId << "\t"  // EventID
-              << primary->GetTrackID() << "\t" // TrackID
-              << nPhotons << "\t"  // Número de fotones
-              << Px << "\t"  // Componente Px del momento
-              << Py << "\t"  // Componente Py del momento
-              << Pz << "\t"  // Componente Pz del momento
-              << kineticEnergy << "\t"  // Energía cinética
-              << fPhotonCount << "\n";
+            if (event->IsAborted()) {
+                // Aquí puedes evitar que se guarde cualquier dato relacionado con este evento
+                G4cout << "El evento ha sido abortado, no se guardan datos." << G4endl;
+                return;
+            }
 
-      // Llenar los ntuples con la información de la partícula madre
-      analysisManager->FillNtupleIColumn(0, 0, fEventId);
-      analysisManager->FillNtupleIColumn(0, 1, nPhotons);
-      analysisManager->FillNtupleDColumn(0, 2, Px);  // px
-      analysisManager->FillNtupleDColumn(0, 3, Py);  // py
-      analysisManager->FillNtupleDColumn(0, 4, Pz);  // pz
-      analysisManager->FillNtupleDColumn(0, 5, kineticEnergy);
+            analysisManager->FillNtupleIColumn(1, 0, fEventId);
+            analysisManager->FillNtupleIColumn(1, 1, nPhotons);
+            analysisManager->FillNtupleIColumn(1, 2, fPhotonCount);
+            analysisManager->FillNtupleDColumn(1, 3, fTotalPhotonEnergy);
+            analysisManager->FillNtupleDColumn(1, 4, totalEnergy);
 
-      // Escribir los datos al archivo ROOT
-      analysisManager->AddNtupleRow(0);
-      
+            analysisManager->FillNtupleDColumn(1, 5, Px);
+            analysisManager->FillNtupleDColumn(1, 6, Py);
+            analysisManager->FillNtupleDColumn(1, 7, Pz);
+
+            analysisManager->FillNtupleDColumn(1, 8, x);
+            analysisManager->FillNtupleDColumn(1, 9, y);
+            analysisManager->FillNtupleDColumn(1, 10, z);
+
+            analysisManager->AddNtupleRow(1);
+        }
     }
-  }
 }
+
+
+

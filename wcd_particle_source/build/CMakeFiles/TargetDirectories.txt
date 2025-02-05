@@ -1,8 +1,0 @@
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/install/local.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/install.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/list_install_components.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/rebuild_cache.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/edit_cache.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/install/strip.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/wcd-pmt-2.dir
-/home/josue/Desktop/Avances simulacion/Avances/wcd_particle_source/build/CMakeFiles/wcd.dir

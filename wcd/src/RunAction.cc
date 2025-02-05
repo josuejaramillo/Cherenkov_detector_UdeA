@@ -1,4 +1,3 @@
-
 // Geant4 Libraries
 //
 #include "G4Timer.hh"
@@ -9,8 +8,8 @@
 // #include "G4GenericAnalysisManager.hh"
 
 
-RunAction::RunAction()
- : G4UserRunAction()
+RunAction::RunAction(const std::string& nombreArchivo)
+ : G4UserRunAction(), fNombreArchivoSalida(nombreArchivo)
 {}
 
 
@@ -42,37 +41,41 @@ void RunAction::BeginOfRunAction(const G4Run*)
 
 
   // Abrir archivo ROOT
-    analysisManager->OpenFile("wcdRoot.root");
+    analysisManager->OpenFile(fNombreArchivoSalida + ".root");
 
     // Crear Ntuples para la información de la partícula madre y los fotones
-    analysisManager->CreateNtuple("MotherData", "Información de la partícula madre");
-    analysisManager->CreateNtupleIColumn("eventId");               // ID del evento
-    analysisManager->CreateNtupleIColumn("numCherenkovPhotons");    // Número de fotones Cherenkov
-    analysisManager->CreateNtupleDColumn("motherMomentumX");        // Momento px
-    analysisManager->CreateNtupleDColumn("motherMomentumY");        // Momento py
-    analysisManager->CreateNtupleDColumn("motherMomentumZ");        // Momento pz
-    analysisManager->CreateNtupleDColumn("motherEnergy");           // Energía
-
-    analysisManager->CreateNtuple("PhotonData", "Información de los fotones detectados");
-    analysisManager->CreateNtupleIColumn("eventId");                // ID del evento
-    analysisManager->CreateNtupleIColumn("photonTrackId");          // ID del track del fotón
-    analysisManager->CreateNtupleDColumn("photonPx");           // Px
-    analysisManager->CreateNtupleDColumn("photonPy");           // Py
-    analysisManager->CreateNtupleDColumn("photonPz");           // Pz
+    analysisManager->CreateNtuple("photonData", "Información de los fotones");
+    analysisManager->CreateNtupleIColumn("eventId");
     analysisManager->CreateNtupleDColumn("photonEnergy");           // Energía del fotón
+    analysisManager->CreateNtupleDColumn("photonWavelength");           // Energía del fotón
 
+
+    analysisManager->CreateNtuple("muonData", "Información de los muones");
+    analysisManager->CreateNtupleIColumn("eventId");
+    analysisManager->CreateNtupleIColumn("nPhotons");        
+    analysisManager->CreateNtupleIColumn("hits");        
+    analysisManager->CreateNtupleDColumn("depositedEnergy");        
+    analysisManager->CreateNtupleDColumn("energy");        
+    analysisManager->CreateNtupleDColumn("px");        
+    analysisManager->CreateNtupleDColumn("py");        
+    analysisManager->CreateNtupleDColumn("pz");   
+
+    analysisManager->CreateNtupleDColumn("x");        
+    analysisManager->CreateNtupleDColumn("y");        
+    analysisManager->CreateNtupleDColumn("z");  
     // Finalizar configuración de Ntuples
-    analysisManager->FinishNtuple(0);  // Para MotherData
-    analysisManager->FinishNtuple(1);  // Para PhotonData
+    analysisManager->FinishNtuple(0); //For photons
+    analysisManager->FinishNtuple(1); //For muons
 
-  // Abrir el archivo al inicio de la corrida
-  outFile.open("infPhotons.csv");
-  if (!outFile.is_open()) {
-      G4cerr << "Error al abrir el archivo de salida!" << G4endl;
-  } else {
-      // Escribir el encabezado una vez
-      outFile << "EventID\tTrackID\tnPhotons\tPx\tPy\tPz\tKineticEnergy\tHits\n";
-  }
+  // // Abrir el archivo al inicio de la corrida
+  // outFile.open(fNombreArchivoSalida + "_infPhotons.csv");
+  // if (!outFile.is_open()) {
+  //     G4cerr << "Error al abrir el archivo de salida!" << G4endl;
+  // } else {
+  //     // Escribir el encabezado una vez
+  //     outFile << "EventID\tnPhotons\tHits\tDepositedEnergy\n";
+  //     // outFile << "EventID\tTrackID\tnPhotons\tPx\tPy\tPz\tKineticEnergy\tHits\n";
+  // }
 
 }
 

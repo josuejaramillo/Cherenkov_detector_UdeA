@@ -32,7 +32,7 @@
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
-#include "PrimaryGeneratorAction_Ascii.hh"
+#include <string>
 
 class B4DetectorConstruction;
 
@@ -42,13 +42,16 @@ class B4DetectorConstruction;
 class ActionInitialization : public G4VUserActionInitialization
 {
   public:
-    ActionInitialization();
+    ActionInitialization(const std::string& nombreArchivo);
     virtual ~ActionInitialization();
 
     virtual void BuildForMaster() const;
     virtual void Build() const;
 
     virtual G4VSteppingVerbose* InitializeSteppingVerbose() const;
+  private:
+    std::string fNombreArchivoSalida;
+    int fSeed;
 };
 
 #endif
