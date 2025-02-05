@@ -25,24 +25,28 @@ To run the main simulation of the Cherenkov detector, follow these steps:
 1. Navigate to the `wcd/build` directory:
 
    ```bash
-   cd wcd/build```
+   cd wcd/build
+   ```
 
 2. Create a folder named rootFiles to store the simulation output:
 
     ```bash
-    mkdir rootFiles```
+    mkdir rootFiles
+    ```
 
 3. Compile the code using cmake and make:
 
     ```bash
-    cmake .. && make```
+    cmake .. && make
+    ```
 
 This will generate an executable named wcd.
 
 4. Run the simulation using the wcd executable with the following command:
 
     ```bash
-    ./wcd -time <timeSeconds> -output <outputROOTfile> -seed <seedNumber>```
+    ./wcd -time <timeSeconds> -output <outputROOTfile> -seed <seedNumber>
+    ```
 
     <timeSeconds>: The exposure time to cosmic rays (in seconds).
 
@@ -53,7 +57,8 @@ This will generate an executable named wcd.
 Example:
 
     ```bash
-    ./wcd -time 3600 -output simulation_output.root -seed 12345```
+    ./wcd -time 3600 -output simulation_output.root -seed 12345
+    ```
 
 This will run the simulation for 1 hour (3600 seconds), save the results in rootFiles/simulation_output.root, and use 12345 as the random seed.
 
