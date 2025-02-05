@@ -106,3 +106,32 @@ Annotations: To change between the two different media, water and the colloid, y
          - `energy_spectrum_all_particles.png`: Energy spectrum plot for all secondary particles.
          - `energy_spectrum_muons.png`: Energy spectrum plot for muons.
          - `muon_flux_histogram.csv`: CSV file containing muon flux histogram data.
+         
+         
+4. **`CondorScripts`**:
+   - **Purpose**: This folder contains scripts and instructions for running cosmic ray simulations using **CORSIKA** and **Geant4** in an HTCondor environment through the LXPLUS service.
+   - **Subdirectories**:
+     - **`simCorsika/`**:
+       - **Purpose**: Contains instructions and files for running CORSIKA simulations in an HTCondor environment.
+       - **Files**:
+         - `Instructions.pdf`: Detailed guide on setting up and running CORSIKA simulations.
+     - **`simG4/`**:
+       - **Purpose**: Contains scripts and files for running Geant4 simulations in an HTCondor environment.
+       - **Files**:
+         - `submitGenerator.py`: Python script to automate the submission of Geant4 simulation jobs.
+         - `wcd/`: Directory containing Geant4 simulation scripts.
+       - **Usage**:
+         - Modify paths in `submitGenerator.py` to match your environment.
+         - Run the script to generate `.sh` and `.sub` files for each simulation:
+           ```bash
+           python submitGenerator.py
+           ```
+         - Submit all jobs to HTCondor using the generated master script:
+           ```bash
+           ./submit/submit_all_jobs.sh
+           ```
+       - **Key Parameters**:
+         - Simulates different mediums (e.g., water, colloid_5, colloid_10).
+         - Configures HTCondor jobs with specific resource requests (e.g., 4 CPUs, 20GB memory, 5GB disk).
+       - **Output**:
+         - Log files (`test.log.txt`, `test.out.txt`, `test.error.txt`) for job status and debugging.
