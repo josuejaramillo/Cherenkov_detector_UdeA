@@ -12,9 +12,9 @@ n_water.csv and k_water.csv: Contain the refractive index and extinction coeffic
 
 Run the script:
 
-    ```bash
+```bash
     python script.py
-
+```
 The script will generate a plot (refractive_index_concentrations.png) showing the refractive index for different TiO₂ concentrations.
 
 ## Output
