@@ -13,9 +13,9 @@ where **conc** corresponds to the specific concentration of the colloid media.
 Running the Script
 To run the script, navigate to the directory containing the script and execute:
 
-    ```bash
+```bash
     python compare_multiple_concentration.py
-
+```
 ## Output
 The script generates two plots:
 
