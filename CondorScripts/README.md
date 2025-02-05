@@ -2,9 +2,9 @@
 
 This directory contains the necessary scripts and instructions to run cosmic ray simulations using CORSIKA and Geant4 in an HTCondor environment through the LXPLUS service. The directory is divided into two main subdirectories:
 
-    - **simCorsika:** Contains instructions and files for running CORSIKA simulations.
+- **simCorsika:** Contains instructions and files for running CORSIKA simulations.
 
-    - **simG4:** Contains scripts and files for running Geant4 simulations.
+- **simG4:** Contains scripts and files for running Geant4 simulations.
 
 1. simCorsika: Running CORSIKA Simulations in HTCondor
 The simCorsika directory contains a PDF file with detailed instructions on how to set up and run CORSIKA simulations for cosmic ray flux in an HTCondor environment. Please refer to the PDF for step-by-step guidance.
@@ -28,18 +28,20 @@ Modify the paths in submitGenerator.py to match your environment (e.g., YOURPATH
 
 Run the script to generate the .sh and .sub files for each simulation:
 
-    ```bash
+```bash
     python submitGenerator.py
-    After generating the files, a master script (submit_all_jobs.sh) will be created in the submit folder. Run this script to submit all jobs to HTCondor:
+```
 
-    ```bash
+After generating the files, a master script (submit_all_jobs.sh) will be created in the submit folder. Run this script to submit all jobs to HTCondor:
+
+```bash
     ./submit/submit_all_jobs.sh
-
+```
 **Key Parameters in submitGenerator.py:**
 
-    - Mediums: The script simulates different mediums (water, colloid_5, colloid_10, etc.).
+- Mediums: The script simulates different mediums (water, colloid_5, colloid_10, etc.).
 
-    - Job Configuration: The script sets up HTCondor jobs with specific resource requests (e.g., 4 CPUs, 20GB memory, 5GB disk).
+- Job Configuration: The script sets up HTCondor jobs with specific resource requests (e.g., 4 CPUs, 20GB memory, 5GB disk).
 
 **General Notes**
 
