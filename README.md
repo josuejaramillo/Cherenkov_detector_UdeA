@@ -48,17 +48,17 @@ This will generate an executable named wcd.
     ./wcd -time <timeSeconds> -output <outputROOTfile> -seed <seedNumber>
     ```
 
-    <timeSeconds>: The exposure time to cosmic rays (in seconds).
+    timeSeconds: The exposure time to cosmic rays (in seconds).
 
-    <outputROOTfile>: The name of the output ROOT file where the simulation results will be saved.
+    outputROOTfile: The name of the output ROOT file where the simulation results will be saved.
 
-    <seedNumber>: The seed for the random number generator used in the simulation.
+    seedNumber: The seed for the random number generator used in the simulation.
 
 Example:
 
-    ```bash
+   ```bash
     ./wcd -time 3600 -output simulation_output.root -seed 12345
-    ```
+```
 
 This will run the simulation for 1 hour (3600 seconds), save the results in rootFiles/simulation_output.root, and use 12345 as the random seed.
 
