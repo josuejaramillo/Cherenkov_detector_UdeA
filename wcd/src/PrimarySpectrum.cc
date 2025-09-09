@@ -27,10 +27,10 @@
 
 PrimarySpectrum::PrimarySpectrum():
 	pi(3.14159265358979323846),
-	Ro(100),//33.85), //radio del círculo donde se ubican las partículas sobre el detector
+	Ro(10000),//33.85), //radio del círculo donde se ubican las partículas sobre el detector
 	initx(0.*cm), //posición de la partícula en esa circunferencia
 	inity(0.*cm),
-	initz(46.*cm),
+	initz(1500.*cm),
 	r(0.*cm), //
 	phi(0.*cm),
 	rphi(0.),
@@ -44,7 +44,7 @@ PrimarySpectrum::PrimarySpectrum():
 //	inputFile(),
 {
 	particlePosition 
-		= G4ThreeVector(0.*cm,0.*cm,46.*cm);
+		= G4ThreeVector(0.*cm,0.*cm,1500.*cm); //G4ThreeVector(0.*cm,0.*cm,46.*cm);
 	particleDirection
 		= G4ThreeVector(0., 0., -1.);
 	
