@@ -13,7 +13,7 @@ CMakeFiles/wcd.dir/src/ActionInitialization.cc.o
  ../include/SteppingVerbose.hh
  ../include/TrackingAction.hh
  ../include/UserEventAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/ActionInitialization.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/ActionInitialization.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Plane3D.h
@@ -495,7 +495,7 @@ CMakeFiles/wcd.dir/src/ActionInitialization.cc.o
 CMakeFiles/wcd.dir/src/DetectorConstruction.cc.o
  ../include/DetectorConstruction.hh
  ../include/PMTSD.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/DetectorConstruction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/DetectorConstruction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Plane3D.h
@@ -698,7 +698,7 @@ CMakeFiles/wcd.dir/src/DetectorConstruction.cc.o
 CMakeFiles/wcd.dir/src/HEPEvtInterface.cc.o
  ../include/HEPEvtInterface.hh
  ../include/HEPEvtParticle.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/HEPEvtInterface.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/HEPEvtInterface.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/SystemOfUnits.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/defs.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/ThreeVector.h
@@ -741,7 +741,7 @@ CMakeFiles/wcd.dir/src/HEPEvtInterface.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/tls.hh
 CMakeFiles/wcd.dir/src/HEPEvtParticle.cc.o
  ../include/HEPEvtParticle.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/HEPEvtParticle.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/HEPEvtParticle.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/ThreeVector.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/ThreeVector.icc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/defs.h
@@ -767,7 +767,7 @@ CMakeFiles/wcd.dir/src/PMTSD.cc.o
  ../include/PMTSD.hh
  ../include/PhotonCounter.hh
  ../include/UserEventAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/PMTSD.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/PMTSD.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -1208,7 +1208,7 @@ CMakeFiles/wcd.dir/src/PMTSD.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/trkdefs.hh
 CMakeFiles/wcd.dir/src/ParticleSource.cc.o
  ../include/ParticleSource.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/ParticleSource.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/ParticleSource.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/PhysicalConstants.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/SystemOfUnits.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/defs.h
@@ -1263,7 +1263,7 @@ CMakeFiles/wcd.dir/src/ParticleSource.cc.o
 CMakeFiles/wcd.dir/src/PhysicsList.cc.o
  ../include/PhysicsList.hh
  ../include/PhysicsListMessenger.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/PhysicsList.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/PhysicsList.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -1685,7 +1685,7 @@ CMakeFiles/wcd.dir/src/PhysicsList.cc.o
 CMakeFiles/wcd.dir/src/PhysicsListMessenger.cc.o
  ../include/PhysicsList.hh
  ../include/PhysicsListMessenger.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/PhysicsListMessenger.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/PhysicsListMessenger.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/PhysicalConstants.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/SystemOfUnits.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Units/defs.h
@@ -1735,7 +1735,7 @@ CMakeFiles/wcd.dir/src/PhysicsListMessenger.cc.o
 CMakeFiles/wcd.dir/src/PrimarySpectrum.cc.o
  ../include/EventAction.hh
  ../include/PrimarySpectrum.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/PrimarySpectrum.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/PrimarySpectrum.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/DRand48Engine.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/DualRand.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/Hurd160Engine.h
@@ -1984,7 +1984,7 @@ CMakeFiles/wcd.dir/src/PrimarySpectrum.cc.o
 CMakeFiles/wcd.dir/src/RunAction.cc.o
  ../include/PhotonCounter.hh
  ../include/RunAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/RunAction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/RunAction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -2421,7 +2421,7 @@ CMakeFiles/wcd.dir/src/RunAction.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/trkdefs.hh
 CMakeFiles/wcd.dir/src/StackingAction.cc.o
  ../include/StackingAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/StackingAction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/StackingAction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/DRand48Engine.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/DualRand.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Random/Hurd160Engine.h
@@ -2706,7 +2706,7 @@ CMakeFiles/wcd.dir/src/SteppingAction.cc.o
  ../include/PhotonCounter.hh
  ../include/SteppingAction.hh
  ../include/UserEventAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/SteppingAction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/SteppingAction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Plane3D.h
@@ -3189,7 +3189,7 @@ CMakeFiles/wcd.dir/src/SteppingAction.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/trkdefs.hh
 CMakeFiles/wcd.dir/src/SteppingVerbose.cc.o
  ../include/SteppingVerbose.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/SteppingVerbose.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/SteppingVerbose.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -3429,7 +3429,7 @@ CMakeFiles/wcd.dir/src/SteppingVerbose.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/trkdefs.hh
 CMakeFiles/wcd.dir/src/TrackingAction.cc.o
  ../include/TrackingAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/TrackingAction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/TrackingAction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -3708,7 +3708,7 @@ CMakeFiles/wcd.dir/src/TrackingAction.cc.o
 CMakeFiles/wcd.dir/src/UserEventAction.cc.o
  ../include/PhotonCounter.hh
  ../include/UserEventAction.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/UserEventAction.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/UserEventAction.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Point3D.h
@@ -4141,7 +4141,7 @@ CMakeFiles/wcd.dir/src/UserEventAction.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/trkdefs.hh
 CMakeFiles/wcd.dir/src/photonCounter.cc.o
  ../include/PhotonCounter.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/src/photonCounter.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/src/photonCounter.cc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4EnvironmentUtils.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Exception.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ExceptionSeverity.hh
@@ -4158,7 +4158,7 @@ CMakeFiles/wcd.dir/wcd.cc.o
  ../include/ActionInitialization.hh
  ../include/DetectorConstruction.hh
  ../include/PhysicsList.hh
- /home/josue/Desktop/Avances simulacion/Avances/wcd_run_window_time/wcd.cc
+ /home/josue/Desktop/Cherenkov_V2/Cherenkov_detector_UdeA/wcd/wcd.cc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/BasicVector3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Normal3D.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Geometry/Plane3D.h
@@ -4249,6 +4249,7 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/ThreeVector.icc
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/ZMxpv.h
  /home/josue/programs/clhep-2.4.7.1/2.4.7.1/CLHEP-install/include/CLHEP/Vector/defs.h
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ASCIITree.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4AffineTransform.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4AffineTransform.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Allocator.hh
@@ -4266,11 +4267,15 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Cache.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4CacheDetails.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ClassificationOfNewTrack.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Color.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Colour.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Cons.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Cons.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DAWNFILE.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DCofThisEvent.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DataVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DataVector.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DigiFilterFactories.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DynamicParticle.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4DynamicParticle.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ElectronOccupancy.hh
@@ -4287,6 +4292,7 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Exp.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4FastVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ForceCondition.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GMocrenFile.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GPILSelection.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GRSSolid.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GRSSolid.icc
@@ -4296,7 +4302,12 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GeomSplitter.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GeomTypes.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GlobalConfig.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4GraphicsSystemList.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4HCofThisEvent.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4HepRep.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4HepRepFile.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4HepRepFileXMLWriter.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4HitFilterFactories.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4IonisParamElm.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4IonisParamMat.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Isotope.hh
@@ -4313,6 +4324,8 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4MaterialPropertiesTable.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4MaterialPropertyVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4MaterialTable.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ModelingParameters.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ModelingParameters.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NavigationHistory.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NavigationHistory.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NavigationHistoryPool.hh
@@ -4326,6 +4339,12 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Normal3D.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NormalNavigation.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NormalNavigation.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4NullModel.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpenGLImmediateQt.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpenGLImmediateX.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpenGLQt.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpenGLStoredQt.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpenGLStoredX.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OpticalSurface.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4OrderedTable.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4PDefManager.hh
@@ -4339,6 +4358,7 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ParticleTable.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ParticleTable.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ParticleTableIterator.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4PhysicalVolumeModel.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Physics2DVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Physics2DVector.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4PhysicsModelCatalog.hh
@@ -4363,6 +4383,8 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ProductionCutsTable.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Profiler.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Profiler.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4RayTracer.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4RayTracerX.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ReferenceCountedHandle.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Region.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Region.icc
@@ -4373,6 +4395,10 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4RunManager.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4RunManagerKernel.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SandiaTable.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Scene.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Scene.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SceneHandlerList.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SceneList.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SmartTrackStack.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SmartVoxelHeader.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SmartVoxelHeader.icc
@@ -4392,6 +4418,8 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4String.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4String.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4SurfaceProperty.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4THitsCollection.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4THitsMap.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Threading.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ThreeVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TouchableHandle.hh
@@ -4406,7 +4434,10 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrackVector.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrackingManager.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrackingMessenger.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrajectoriesModel.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrajectoryContainer.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrajectoryFilterFactories.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4TrajectoryModelFactories.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Transform3D.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Tubs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Tubs.icc
@@ -4427,17 +4458,30 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4UserStackingAction.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4UserSteppingAction.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4UserTrackingAction.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VDigi.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VDigiCollection.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VExceptionHandler.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VExternalNavigation.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VFilter.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VGraphicsScene.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VGraphicsSystem.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VHit.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VHitsCollection.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VMarker.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VMarker.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VModel.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VModel.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VModelFactory.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VPVParameterisation.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VParticleChange.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VParticleChange.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VPhysicalVolume.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VPhysicalVolume.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VProcess.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VRML1File.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VRML2File.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VSceneHandler.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VSceneHandler.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VSolid.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VSolid.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VStateDependent.hh
@@ -4445,6 +4489,8 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VTouchable.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VTouchable.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VTrajectory.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VTrajectoryModel.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VTree.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUIshell.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUPLSplitter.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUserActionInitialization.hh
@@ -4452,8 +4498,21 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUserEventInformation.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUserPhysicsList.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VUserTrackInformation.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VViewer.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VViewer.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VVisManager.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VVolumeMaterialScanner.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Vector3D.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ViewParameters.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ViewParameters.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4ViewerList.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisAttributes.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisAttributes.icc
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisExecutive.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisExecutive.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisExtent.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisManager.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VisManager.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Visible.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4Visible.icc
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/G4VoxelLimits.hh
@@ -4470,6 +4529,7 @@ CMakeFiles/wcd.dir/wcd.cc.o
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/geomdefs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/geomwdefs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/globals.hh
+ /home/josue/programs/geant4-v10.7.4-install/include/Geant4/graphics_reps_defs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/icomsdefs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/pwdefs.hh
  /home/josue/programs/geant4-v10.7.4-install/include/Geant4/rundefs.hh
