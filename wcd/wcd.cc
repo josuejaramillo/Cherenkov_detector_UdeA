@@ -5,76 +5,104 @@
 #include "Randomize.hh"
 #include "ActionInitialization.hh"
 #include "G4UIExecutive.hh"
+#include "G4VisExecutive.hh"
+
 #include <string>
 #include <cstdlib>  // Para std::atoi
 
 int main(int argc, char** argv)
 {
-   // Valor predeterminado de ty variables para archivo y semilla
-  int t = 1; //1 seg
+  // Valores predeterminados
+  int t = 1; // 1 seg
   std::string nombreArchivoBase = "output.root";  // Nombre predeterminado
   long seed = 12345;  // Semilla predeterminada
+  bool useVis = false;
 
   // Analizar argumentos de la línea de comandos
   for (int i = 1; i < argc; i++) {
     if (std::string(argv[i]) == "-time" && i + 1 < argc) {
       t = std::atoi(argv[i + 1]);
-      i++;  // Saltar al siguiente argumento después de -N
+      i++;
     } else if (std::string(argv[i]) == "-output" && i + 1 < argc) {
       nombreArchivoBase = argv[i + 1];
-      i++;  // Saltar al siguiente argumento después de -output
+      i++;
     } else if (std::string(argv[i]) == "-seed" && i + 1 < argc) {
       seed = std::stol(argv[i + 1]);
-      i++;  // Saltar al siguiente argumento después de -seed
+      i++;
+    } else if (std::string(argv[i]) == "-vis") {
+      useVis = true;
     }
   }
 
-  double particle_rate = 137.24; //Muons/m²s
+  // *********************************************************************************
+  std::map<std::string,double> particleRates = {
+    {"mu-",     62.374},
+    {"mu+",     74.862},
+    {"e-",      38.204},
+    {"e+",      21.610},
+    // {"gamma",  537.494},
+    {"proton",   5.018},
+    // {"neutron", 31.854}
+  };
+
+  // Convert rates into counts for the chosen simulation time window
+  std::map<std::string,int> particleCounts;
   double S_det = M_PI*(0.88*0.5)*(0.88*0.5); // Effective surface of the Cherenkov detector
-  int N = static_cast<int>(particle_rate*S_det*t);
-  G4cout << "Number of particles " << N << G4endl;
-  
+  for (const auto& kv : particleRates) {
+      int Ni = static_cast<int>(kv.second * S_det * t);
+      particleCounts[kv.first] = Ni;
+      G4cout << kv.first << " → " << Ni << G4endl;
+  }
+
+  // Total number of particles across all species
+  int Ntot = 0;
+  for (auto& kv : particleCounts) Ntot += kv.second;
+  G4cout << "Number of particles " << Ntot << G4endl;
+  // *********************************************************************************
 
   std::string nombreArchivoSalida = "./rootFiles/" + nombreArchivoBase + "_" + std::to_string(seed);
 
-  // Determina si se está en modo interactivo o batch
+  // Determina si se está en modo interactivo
   G4UIExecutive* ui = nullptr;
-  if (argc == 1) {
-    ui = new G4UIExecutive(argc, argv);  // Modo interactivo solo si no hay archivo macro
+  if (argc == 1 || useVis) {
+    ui = new G4UIExecutive(argc, argv);
   }
 
-  // Selecciona el motor de números aleatorios
+  // Seed for reproducibility, this might be unnecersary... or problematic
   G4Random::setTheEngine(new CLHEP::RanecuEngine);
+  CLHEP::HepRandom::setTheSeed(seed);
 
-  // Construye el RunManager
+  // RunManager
   G4RunManager* runManager = new G4RunManager;
 
-  // Inicializa las clases necesarias
   runManager->SetUserInitialization(new DetectorConstruction());
   runManager->SetUserInitialization(new PhysicsList());
-  runManager->SetUserInitialization(new ActionInitialization(nombreArchivoSalida));
-  // Inicializa el núcleo de Geant4
+  runManager->SetUserInitialization(new ActionInitialization(nombreArchivoSalida, particleCounts));
   runManager->Initialize();
 
-  // Obtiene el puntero al manejador de la interfaz de usuario
+  // Visualization manager (solo si es interactivo o -vis)
+  G4VisExecutive* visManager = nullptr;
+  if (ui) {
+    visManager = new G4VisExecutive;
+    visManager->Initialize();
+  }
+
+  // UI manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
 
   if (!ui) {
-    // Modo batch (sin interfaz gráfica)
-    G4String command = "/run/beamOn " + std::to_string(N);  // Ejecuta N eventos
-    UImanager->ApplyCommand(command);
+    // --- Modo batch ---
+    UImanager->ApplyCommand("/run/beamOn " + std::to_string(Ntot));
     UImanager->ApplyCommand("/run/verbose 2");
     UImanager->ApplyCommand("/run/eventMaxTime 1000 ms");
-    
-    
   } else {
-    // Modo interactivo (sin visualización)
-    UImanager->ApplyCommand("/control/execute init.mac");
+    // --- Modo interactivo con visualización ---
+    UImanager->ApplyCommand("/control/execute vis.mac");
     ui->SessionStart();
     delete ui;
   }
 
-  // Termina la simulación
+  if (visManager) delete visManager;
   delete runManager;
   return 0;
 }

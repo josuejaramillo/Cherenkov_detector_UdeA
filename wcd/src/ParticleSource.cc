@@ -1,5 +1,3 @@
-
-
 #include "ParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "G4SystemOfUnits.hh"
@@ -9,33 +7,61 @@
 #include <cmath>
 #include <numeric>
 #include <algorithm>
+#include <map>
 
-ParticleSource::ParticleSource(int seed) : gen(seed) {
+// ------------------------------------------------------------
+// Constructor
+// ------------------------------------------------------------
+ParticleSource::ParticleSource(int seed, const std::map<std::string,int>& counts)
+: gen(seed), remainingCounts(counts)
+{
     particleGun = new G4ParticleGun(1);  // One particle per event
+    
+    LoadDistribution("../Distributions/mu-_energy.csv",   energyDistributions["mu-"]);
+    LoadDistribution("../Distributions/mu-_theta.csv",    thetaDistributions["mu-"]);
+    LoadDistribution("../Distributions/mu-_phi.csv",      phiDistributions["mu-"]);
 
-    // Load distributions
-    LoadDistribution("../Distributions/energy_distribution.csv", energyDistribution);
-    LoadDistribution("../Distributions/phi_distribution_radians.csv", phiDistribution);
-    LoadDistribution("../Distributions/theta_distribution_radians.csv", thetaDistribution);
+    LoadDistribution("../Distributions/mu+_energy.csv",   energyDistributions["mu+"]);
+    LoadDistribution("../Distributions/mu+_theta.csv",    thetaDistributions["mu+"]);
+    LoadDistribution("../Distributions/mu+_phi.csv",      phiDistributions["mu+"]);
 
-    // Atmospheric particles with relative weights (empirical/flexible)
-    particleSpectrum = {
-        {"mu-"},
-        {"mu+"},
-        {"e-"},
-        {"e+"},
-        {"gamma"},
-        {"proton"},
-        {"neutron"}
-    };
+    // Electrons / positrons
+    LoadDistribution("../Distributions/e-_energy.csv",    energyDistributions["e-"]);
+    LoadDistribution("../Distributions/e-_theta.csv",     thetaDistributions["e-"]);
+    LoadDistribution("../Distributions/e-_phi.csv",       phiDistributions["e-"]);
+
+    LoadDistribution("../Distributions/e+_energy.csv",    energyDistributions["e+"]);
+    LoadDistribution("../Distributions/e+_theta.csv",     thetaDistributions["e+"]);
+    LoadDistribution("../Distributions/e+_phi.csv",       phiDistributions["e+"]);
+
+    // Gamma
+    // LoadDistribution("../Distributions/gamma_energy.csv", energyDistributions["gamma"]);
+    // LoadDistribution("../Distributions/gamma_theta.csv",  thetaDistributions["gamma"]);
+    // LoadDistribution("../Distributions/gamma_phi.csv",    phiDistributions["gamma"]);
+
+    // Proton
+    LoadDistribution("../Distributions/proton_energy.csv", energyDistributions["proton"]);
+    LoadDistribution("../Distributions/proton_theta.csv",  thetaDistributions["proton"]);
+    LoadDistribution("../Distributions/proton_phi.csv",    phiDistributions["proton"]);
+
+    // Neutron
+    // LoadDistribution("../Distributions/neutron_energy.csv", energyDistributions["neutron"]);
+    // LoadDistribution("../Distributions/neutron_theta.csv",  thetaDistributions["neutron"]);
+    // LoadDistribution("../Distributions/neutron_phi.csv",    phiDistributions["neutron"]);
 }
 
+// ------------------------------------------------------------
+// Destructor
+// ------------------------------------------------------------
 ParticleSource::~ParticleSource() {
     delete particleGun;
 }
 
+// ------------------------------------------------------------
+// Generate primary particles
+// ------------------------------------------------------------
 void ParticleSource::GeneratePrimaries(G4Event* anEvent) {
-    // Select particle type
+    // Select particle type from remaining counts
     std::string particleName = SampleParticleType();
     auto particle = G4ParticleTable::GetParticleTable()->FindParticle(particleName);
     if (!particle) {
@@ -44,13 +70,14 @@ void ParticleSource::GeneratePrimaries(G4Event* anEvent) {
     }
     particleGun->SetParticleDefinition(particle);
 
-    // Sample energy from shared distribution
-    G4double energy = SampleFromDistribution(energyDistribution) * GeV;
+    // Energy from particle-specific distribution
+    G4double energy = SampleFromDistribution(energyDistributions[particleName]) * GeV;
     particleGun->SetParticleEnergy(energy);
 
-    // Sample direction
-    G4double theta = SampleFromDistribution(thetaDistribution);
-    G4double phi = SampleFromDistribution(phiDistribution);
+    // Angles from particle-specific distribution
+    G4double theta = SampleFromDistribution(thetaDistributions[particleName]);
+    G4double phi   = SampleFromDistribution(phiDistributions[particleName]);
+
     G4ThreeVector direction(std::sin(theta) * std::cos(phi),
                             std::sin(theta) * std::sin(phi),
                             -std::cos(theta));
@@ -72,7 +99,11 @@ void ParticleSource::GeneratePrimaries(G4Event* anEvent) {
     particleGun->GeneratePrimaryVertex(anEvent);
 }
 
-void ParticleSource::LoadDistribution(const std::string& filename, std::vector<std::pair<double, double>>& distribution) {
+// ------------------------------------------------------------
+// Load distribution from CSV
+// ------------------------------------------------------------
+void ParticleSource::LoadDistribution(const std::string& filename,
+                                      std::vector<std::pair<double, double>>& distribution) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         G4cerr << "Error opening file: " << filename << G4endl;
@@ -84,9 +115,24 @@ void ParticleSource::LoadDistribution(const std::string& filename, std::vector<s
         distribution.emplace_back(value, probability);
     }
     file.close();
+
+    if (distribution.empty()) {
+        G4cerr << "Warning: loaded empty distribution from " << filename << G4endl;
+    } else {
+        G4cout << "Loaded " << distribution.size()
+               << " entries from " << filename << G4endl;
+    }
 }
 
+// ------------------------------------------------------------
+// Sample a value from distribution (CDF method)
+// ------------------------------------------------------------
 double ParticleSource::SampleFromDistribution(const std::vector<std::pair<double, double>>& distribution) {
+    if (distribution.empty()) {
+        G4cerr << "Warning: empty distribution, returning 0" << G4endl;
+        return 0.0;
+    }
+
     std::vector<double> cdf(distribution.size());
     cdf[0] = distribution[0].second;
     for (size_t i = 1; i < distribution.size(); ++i)
@@ -98,119 +144,15 @@ double ParticleSource::SampleFromDistribution(const std::vector<std::pair<double
     return distribution[std::distance(cdf.begin(), it)].first;
 }
 
+// ------------------------------------------------------------
+// Select particle type from remaining counts
+// ------------------------------------------------------------
 std::string ParticleSource::SampleParticleType() {
-    std::vector<double> weights;
-    for (const auto& entry : particleSpectrum) {
-        weights.push_back(entry.weight);
+    for (auto& kv : remainingCounts) {
+        if (kv.second > 0) {
+            kv.second--;       // consume one from quota
+            return kv.first;   // return particle name
+        }
     }
-
-    std::vector<double> cdf(weights.size());
-    cdf[0] = weights[0];
-    for (size_t i = 1; i < weights.size(); ++i)
-        cdf[i] = cdf[i - 1] + weights[i];
-
-    std::uniform_real_distribution<> dis(0.0, cdf.back());
-    double r = dis(gen);
-    size_t index = std::distance(cdf.begin(), std::lower_bound(cdf.begin(), cdf.end(), r));
-    return particleSpectrum[index].name;
+    return "mu-"; // fallback (should not happen if counts are set correctly)
 }
-
-
-
-/*
-#include "ParticleSource.hh"
-#include "G4ParticleTable.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Event.hh"
-#include <fstream>
-#include <random>
-#include <cmath>
-#include <numeric>
-
-ParticleSource::ParticleSource(int seed) : gen(seed) {
-    particleGun = new G4ParticleGun(1);  // Dispara una partícula por evento
-
-    auto particleTable = G4ParticleTable::GetParticleTable();
-    auto particle = particleTable->FindParticle("mu-");  // Ajuste de partícula; aquí es un muon negativo
-    particleGun->SetParticleDefinition(particle);
-
-    // Cargar distribuciones desde rutas de archivos CSV
-    LoadDistribution("../Distributions/energy_distribution.csv", energyDistribution);
-    LoadDistribution("../Distributions/phi_distribution_radians.csv", phiDistribution);
-    LoadDistribution("../Distributions/theta_distribution_radians.csv", thetaDistribution);
-}
-
-ParticleSource::~ParticleSource() {
-    delete particleGun;
-}
-
-void ParticleSource::GeneratePrimaries(G4Event* anEvent) {
-    // Muestrear energía, theta y phi usando distribuciones basadas en probabilidad
-    G4double energy = SampleFromDistribution(energyDistribution) * GeV;
-    G4double theta = SampleFromDistribution(thetaDistribution);
-    G4double phi = SampleFromDistribution(phiDistribution);
-
-    // Establecer energía y dirección de la partícula
-    particleGun->SetParticleEnergy(energy);
-    G4ThreeVector direction(std::sin(theta) * std::cos(phi),
-                            std::sin(theta) * std::sin(phi),
-                            -1*std::cos(theta));
-    particleGun->SetParticleMomentumDirection(direction);
-
-    // Posición de la partícula: dentro de un círculo en (0, 0, 74cm)
-    G4double radius = 88*0.5 * cm;  // Radio del círculo
-    std::uniform_real_distribution<> dist_radius(0, radius);
-    std::uniform_real_distribution<> dist_angle(0, 2 * M_PI);
-
-    // Muestrear una posición aleatoria dentro del círculo
-    G4double r = dist_radius(gen);
-    G4double angle = dist_angle(gen);
-    G4double x = r * std::cos(angle);
-    G4double y = r * std::sin(angle);
-    G4double z = 74.0*0.5 * cm;  // Altura fija en z
-
-    particleGun->SetParticlePosition(G4ThreeVector(x, y, z));
-
-    // Generar el evento
-    particleGun->GeneratePrimaryVertex(anEvent);
-
-    // Output de energía, dirección y posición
-    //G4cout << "Particle Energy: " << energy / GeV << " GeV, "
-    //      << "Position: (" << x / cm << " cm, " << y / cm << " cm, " << z / cm << " cm), "
-    //      << "Direction: (" << direction.x() << ", " << direction.y() << ", " << direction.z() << ")"
-    //     << G4endl;
-}
-
-void ParticleSource::LoadDistribution(const std::string& filename, std::vector<std::pair<double, double>>& distribution) {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        G4cerr << "Error al abrir el archivo: " << filename << G4endl;
-        return;
-    }
-    
-    double value, probability;
-    while (file >> value && file.ignore(1) && file >> probability) {
-        distribution.emplace_back(value, probability);
-    }
-    file.close();
-}
-
-double ParticleSource::SampleFromDistribution(const std::vector<std::pair<double, double>>& distribution) {
-    // Crear un vector de la CDF
-    std::vector<double> cdf(distribution.size());
-    cdf[0] = distribution[0].second;
-    for (size_t i = 1; i < distribution.size(); ++i) {
-        cdf[i] = cdf[i - 1] + distribution[i].second;
-    }
-
-    // Generar un número aleatorio en el rango de la CDF
-    std::uniform_real_distribution<> dis(0.0, cdf.back());
-    double random_value = dis(gen);
-
-    // Buscar el índice donde cae el número aleatorio
-    auto it = std::lower_bound(cdf.begin(), cdf.end(), random_value);
-    size_t index = std::distance(cdf.begin(), it);
-
-    return distribution[index].first;
-}
-*\

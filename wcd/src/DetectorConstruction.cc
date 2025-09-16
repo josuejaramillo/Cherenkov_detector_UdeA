@@ -38,7 +38,8 @@ DetectorConstruction::DetectorConstruction()
 {
   G4cout << "...DetectorConstruction..." << G4endl;
   
-  fExpHall_x = fExpHall_y = fExpHall_z = 200.0*cm;
+  fExpHall_x = fExpHall_y = 200.0*cm; 
+  fExpHall_z = 7500.0*cm;
   fTank_x    = fTank_y    = fTank_z    =  60.0*cm;
   
   O = H = C = NULL;
@@ -301,7 +302,7 @@ const G4int nEntriesColloid = sizeof(photonEnergy_colloid)/sizeof(G4double);
 
 //Optical properties TiO2 various concentrations
 
-Concentration 0.01%
+// Concentration 0.01%
  G4double refractiveIndex_TiO2[] = 
  {
    1.34327440,   1.34377508,   1.34426929,   1.46477170,   1.35505665,   1.35514909,   1.35616296,   1.35633734, 
