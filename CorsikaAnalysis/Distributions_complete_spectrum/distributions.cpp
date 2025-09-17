@@ -15,9 +15,9 @@ const map<int, double> particleMass = {
     {6, 0.10566},   // mu+
     {2, 0.000511},  // e-
     {3, 0.000511},  // e+
-    {1, 0.0},       // gamma
+    //{1, 0.0},       // gamma
     {14, 0.93827},  // proton
-    {13, 0.93957}   // neutron
+    //{13, 0.93957}   // neutron
 };
 
 // Particle labels
@@ -26,9 +26,9 @@ const map<int, string> particleName = {
     {6, "mu+"},
     {2, "e-"},
     {3, "e+"},
-    {1, "gamma"},
+    //{1, "gamma"},
     {14, "proton"},
-    {13, "neutron"}
+    //{13, "neutron"}
 };
 
 // Simple histogram function
@@ -74,7 +74,7 @@ int main() {
     int i = 0;
 
     // Storage: particle ID → vector of variables
-    map<int, vector<double>> energies, thetas, phis;
+    map<int, vector<double>> energies, thetas, phis, radii;
 
     while (getline(inputFile, line)) {
         if (i == 0) { i++; continue; }  // Skip header line
@@ -99,9 +99,14 @@ int main() {
         // φ: angle in xy-plane
         double phi = atan2(py, px);
 
+        // Radial distance in ground plane (meters)
+        double r = sqrt(x * x + y * y);
+
         energies[id].push_back(E);
         thetas[id].push_back(theta);
         phis[id].push_back(phi);
+        if (r < 200.0)
+    	radii[id].push_back(r);
     }
     inputFile.close();
 
@@ -121,6 +126,9 @@ int main() {
             makeHistogram(phis[id], bins,
                           name + "_phi.csv",
                           "Phi_rad");
+            makeHistogram(radii[id], bins,
+                          name + "_r.csv",
+                          "R_m");
             cout << "Generated distributions for " << name << endl;
         }
     }
