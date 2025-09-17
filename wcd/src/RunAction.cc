@@ -50,7 +50,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
     analysisManager->CreateNtupleDColumn("photonWavelength");           // Energía del fotón
 
 
-    analysisManager->CreateNtuple("muonData", "Información de los muones");
+    analysisManager->CreateNtuple("primaryData", "Información de las partículas primarias");
     analysisManager->CreateNtupleIColumn("eventId");
     analysisManager->CreateNtupleIColumn("nPhotons");        
     analysisManager->CreateNtupleIColumn("hits");        
@@ -59,10 +59,10 @@ void RunAction::BeginOfRunAction(const G4Run*)
     analysisManager->CreateNtupleDColumn("px");        
     analysisManager->CreateNtupleDColumn("py");        
     analysisManager->CreateNtupleDColumn("pz");   
-
     analysisManager->CreateNtupleDColumn("x");        
     analysisManager->CreateNtupleDColumn("y");        
     analysisManager->CreateNtupleDColumn("z");  
+    analysisManager->CreateNtupleSColumn("particleName"); // NEW
     // Finalizar configuración de Ntuples
     analysisManager->FinishNtuple(0); //For photons
     analysisManager->FinishNtuple(1); //For muons

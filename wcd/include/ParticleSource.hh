@@ -23,6 +23,7 @@ private:
     std::map<std::string, std::vector<std::pair<double, double>>> energyDistributions;
     std::map<std::string, std::vector<std::pair<double, double>>> thetaDistributions;
     std::map<std::string, std::vector<std::pair<double, double>>> phiDistributions;
+    std::map<std::string, std::vector<std::pair<double, double>>> rDistributions;
 
     // Remaining number of particles to generate for each species
     std::map<std::string,int> remainingCounts;

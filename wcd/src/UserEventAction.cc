@@ -71,19 +71,20 @@ void UserEventAction::EndOfEventAction(const G4Event* event)
                 return;
             }
 
+            std::string pname = primary->GetParticleDefinition()->GetParticleName();
+
             analysisManager->FillNtupleIColumn(1, 0, fEventId);
             analysisManager->FillNtupleIColumn(1, 1, nPhotons);
             analysisManager->FillNtupleIColumn(1, 2, fPhotonCount);
             analysisManager->FillNtupleDColumn(1, 3, fTotalPhotonEnergy);
             analysisManager->FillNtupleDColumn(1, 4, totalEnergy);
-
             analysisManager->FillNtupleDColumn(1, 5, Px);
             analysisManager->FillNtupleDColumn(1, 6, Py);
             analysisManager->FillNtupleDColumn(1, 7, Pz);
-
             analysisManager->FillNtupleDColumn(1, 8, x);
             analysisManager->FillNtupleDColumn(1, 9, y);
             analysisManager->FillNtupleDColumn(1, 10, z);
+            analysisManager->FillNtupleSColumn(1, 11, pname);
 
             analysisManager->AddNtupleRow(1);
         }

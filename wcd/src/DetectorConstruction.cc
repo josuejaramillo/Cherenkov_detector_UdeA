@@ -39,7 +39,7 @@ DetectorConstruction::DetectorConstruction()
   G4cout << "...DetectorConstruction..." << G4endl;
   
   fExpHall_x = fExpHall_y = 200.0*cm; 
-  fExpHall_z = 7500.0*cm;
+  fExpHall_z = 200.0*cm;
   fTank_x    = fTank_y    = fTank_z    =  60.0*cm;
   
   O = H = C = NULL;
