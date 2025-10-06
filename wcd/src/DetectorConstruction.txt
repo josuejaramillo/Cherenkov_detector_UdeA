@@ -46,25 +46,25 @@ void DetectorConstruction::DefineMaterials()
 {
     G4NistManager* nist = G4NistManager::Instance();
 
-    G4Element* H  = nist->FindOrBuildElement("H");
-    G4Element* O  = nist->FindOrBuildElement("O");
-    G4Element* C  = nist->FindOrBuildElement("C");
+    G4Element* H = nist->FindOrBuildElement("H");
+    G4Element* O = nist->FindOrBuildElement("O");
+    G4Element* C = nist->FindOrBuildElement("C");
     G4Element* Ti = nist->FindOrBuildElement("Ti");
 
     // -----------------------------------------------------------
     // Base materials
     // -----------------------------------------------------------
     expHall_mat = nist->FindOrBuildMaterial("G4_AIR");
-    glass       = nist->FindOrBuildMaterial("G4_Pyrex_Glass");
-    alum        = nist->FindOrBuildMaterial("G4_Al");
-    TiDioxide   = nist->FindOrBuildMaterial("G4_TITANIUM_DIOXIDE");
+    glass = nist->FindOrBuildMaterial("G4_Pyrex_Glass");
+    alum  = nist->FindOrBuildMaterial("G4_Al");
+    TiDioxide = nist->FindOrBuildMaterial("G4_TITANIUM_DIOXIDE");
 
     // Water
     water = new G4Material("Water", 1.0*g/cm3, 2);
     water->AddElement(H, 2);
     water->AddElement(O, 1);
 
-    // Reflective paint
+    // White paint (TiO2-based)
     whitePaint = new G4Material("WhitePaintMix", 1.5*g/cm3, 3);
     whitePaint->AddElement(Ti, 0.10);
     whitePaint->AddElement(O, 0.20);
@@ -75,62 +75,32 @@ void DetectorConstruction::DefineMaterials()
                             kStateGas, 0.1*kelvin, 1.e-19*pascal);
 
     // -----------------------------------------------------------
-    // Optical properties for water (absorption, Rayleigh scattering, refractive index)
+    // Optical properties for water
     // -----------------------------------------------------------
     const G4int nEntries = 32;
     G4double photonEnergy[nEntries] =
     {1.127,1.158,1.190,1.224,1.260,1.298,1.339,1.383,
-    1.429,1.478,1.531,1.588,1.650,1.716,1.788,1.866,
-    1.951,2.044,2.147,2.261,2.387,2.529,2.688,2.868,
-    3.075,3.313,3.592,3.922,4.319,4.804,5.413,6.199};
+     1.429,1.478,1.531,1.588,1.650,1.716,1.788,1.866,
+     1.951,2.044,2.147,2.261,2.387,2.529,2.688,2.868,
+     3.075,3.313,3.592,3.922,4.319,4.804,5.413,6.199};
+
     for (int i=0;i<nEntries;i++) photonEnergy[i]*=eV;
 
-    // --- Absorption length
-    G4double absorption[nEntries] = {
-    0.014*m, 0.016*m, 0.019*m, 0.024*m, 0.024*m, 0.025*m, 0.063*m, 0.150*m,
-    0.190*m, 0.271*m, 0.434*m, 0.437*m, 0.385*m, 0.662*m, 1.795*m, 2.657*m,
-    3.375*m, 4.115*m, 10.358*m, 22.652*m, 33.008*m, 40.019*m, 37.455*m, 28.337*m,
-    18.017*m, 8.370*m, 3.770*m, 1.998*m, 1.153*m, 0.681*m, 0.393*m, 0.145*m
-    };
-
-    // --- Refractive index
-    G4double refractiveIndex1[nEntries] = {
-    1.32548669,1.32592875,1.32636092,1.32679534,1.32700000,1.32700000,1.32793651,1.32800000,
-    1.32827081,1.32900000,1.32900000,1.32974810,1.33000000,1.33007925,1.33100000,1.33100000,
-    1.33156278,1.33200000,1.33288495,1.33305041,1.33420904,1.33537643,1.33653720,1.33769595,
-    1.33886081,1.34104044,1.34355121,1.34703875,1.35154687,1.35935552,1.37114869,1.39586638
-    };
-
-    // --- Rayleigh scattering length
-    G4double rayleigh_water[32] = {
-    35.*m, 38.*m, 41.*m, 44.*m, 47.*m, 50.*m, 55.*m, 60.*m,
-    65.*m, 70.*m, 75.*m, 80.*m, 85.*m, 90.*m, 95.*m, 100.*m,
-    110.*m, 120.*m, 130.*m, 140.*m, 160.*m, 180.*m, 200.*m, 220.*m,
-    240.*m, 260.*m, 280.*m, 300.*m, 320.*m, 340.*m, 360.*m, 380.*m
-    };
-
-    // --- Material Properties Table ---
+    G4double refrWater[nEntries];
+    for (int i=0;i<nEntries;i++) refrWater[i] = 1.33;
     G4MaterialPropertiesTable* mptWater = new G4MaterialPropertiesTable();
-    mptWater->AddProperty("RINDEX", photonEnergy, refractiveIndex1, nEntries);
-    mptWater->AddProperty("ABSLENGTH", photonEnergy, absorption, nEntries);
-    mptWater->AddProperty("RAYLEIGH", photonEnergy, rayleigh_water, nEntries);
-
+    mptWater->AddProperty("RINDEX", photonEnergy, refrWater, nEntries);
     water->SetMaterialPropertiesTable(mptWater);
 
     // -----------------------------------------------------------
-    // TiO2 colloid with precise refractive indices + absorption + Mie
+    // TiO2 colloid material and concentration selector
     // -----------------------------------------------------------
-    G4double wtTiO2  = fTiO2conc * perCent;
-    G4double wtWater = 1.0 - wtTiO2;
-    const G4double rhoWater = 1.0*g/cm3;
-    const G4double rhoTiO2  = 4.23*g/cm3;
-    G4double rhoMix = 1.0 / (wtWater/rhoWater + wtTiO2/rhoTiO2);
-
-    TiO2_colloid = new G4Material("TiO2_colloid", rhoMix, 2);
-    TiO2_colloid->AddMaterial(water, wtWater);
-    TiO2_colloid->AddMaterial(TiDioxide, wtTiO2);
+    TiO2_colloid = new G4Material("TiO2_colloid", 1.002*g/cm3, 2);
+    TiO2_colloid->AddMaterial(water, (100-fTiO2conc)*perCent);
+    TiO2_colloid->AddMaterial(TiDioxide, fTiO2conc*perCent);
 
     G4double refractiveIndex_TiO2[nEntries];
+
     if (fTiO2conc <= 0.01) {
         G4double tmp[] = {1.343,1.344,1.345,1.345,1.346,1.347,1.348,1.349,
                           1.349,1.350,1.350,1.351,1.352,1.353,1.354,1.355,
@@ -160,74 +130,12 @@ void DetectorConstruction::DefineMaterials()
                     "Invalid TiO2 concentration. Use 0.01, 10, 20, or 30 (%).");
     }
 
-    // --- Absorption & Mie arrays (shared across all concentrations)
-    G4double absorption_TiO2[32] = {
-      50.*m,48.*m,45.*m,40.*m,35.*m,30.*m,20.*m,10.*m,
-      5.*m,3.*m,1.*m,0.8*m,0.6*m,0.5*m,0.4*m,0.3*m,
-      0.25*m,0.20*m,0.15*m,0.12*m,0.10*m,0.08*m,0.06*m,0.05*m,
-      0.04*m,0.03*m,0.025*m,0.020*m,0.015*m,0.010*m,0.008*m,0.005*m
-    };
-
-    G4double mie_TiO2[32] = {
-      0.5*m,0.45*m,0.40*m,0.35*m,0.30*m,0.28*m,0.25*m,0.20*m,
-      0.18*m,0.16*m,0.14*m,0.13*m,0.12*m,0.11*m,0.10*m,0.095*m,
-      0.090*m,0.085*m,0.080*m,0.075*m,0.07*m,0.065*m,0.060*m,0.055*m,
-      0.050*m,0.045*m,0.042*m,0.038*m,0.035*m,0.030*m,0.028*m,0.025*m
-    };
-
     G4MaterialPropertiesTable* MPT_TiO2 = new G4MaterialPropertiesTable();
     MPT_TiO2->AddProperty("RINDEX", photonEnergy, refractiveIndex_TiO2, nEntries);
-    MPT_TiO2->AddProperty("ABSLENGTH", photonEnergy, absorption_TiO2, nEntries);
-    MPT_TiO2->AddProperty("MIEHG", photonEnergy, mie_TiO2, nEntries);
-    MPT_TiO2->AddConstProperty("MIEHG_FORWARD", 0.9);
-    MPT_TiO2->AddConstProperty("MIEHG_BACKWARD", 0.9);
-    MPT_TiO2->AddConstProperty("MIEHG_FORWARD_RATIO", 0.8);
     TiO2_colloid->SetMaterialPropertiesTable(MPT_TiO2);
 
-    // -----------------------------------------------------------
-    // Glycerine (with Rayleigh scattering instead of Mie)
-    // -----------------------------------------------------------
-    G4Material* glycerine = new G4Material("Glycerine", 1.26*g/cm3, 3);
-    glycerine->AddElement(C, 3);
-    glycerine->AddElement(H, 8);
-    glycerine->AddElement(O, 3);
-
-    // --- Optical properties ---
-    G4double absorption_gly[32] = {
-    30.*m,35.*m,40.*m,45.*m,50.*m,55.*m,60.*m,65.*m,
-    70.*m,75.*m,80.*m,85.*m,90.*m,95.*m,100.*m,105.*m,
-    110.*m,115.*m,120.*m,125.*m,130.*m,135.*m,140.*m,145.*m,
-    150.*m,155.*m,160.*m,165.*m,170.*m,175.*m,180.*m,185.*m
-    };
-
-    G4double rayleigh_gly[32]; // very long scattering lengths (almost negligible)
-    for (int i = 0; i < 32; i++) rayleigh_gly[i] = 2000.*m;  // 2 km constant
-
-    G4double refrGly[32] = {
-    1.46,1.4605,1.4610,1.4615,1.4620,1.4625,1.4630,1.4635,
-    1.4640,1.4645,1.4650,1.4655,1.4660,1.4665,1.4670,1.4675,
-    1.4680,1.4685,1.4690,1.4695,1.4700,1.4705,1.4710,1.4715,
-    1.4720,1.4725,1.4730,1.4735,1.4740,1.4745,1.4750,1.4755
-    };
-
-    // --- Build Material Properties Table ---
-    G4MaterialPropertiesTable* mptGly = new G4MaterialPropertiesTable();
-    mptGly->AddProperty("RINDEX", photonEnergy, refrGly, nEntries);
-    mptGly->AddProperty("ABSLENGTH", photonEnergy, absorption_gly, nEntries);
-    mptGly->AddProperty("RAYLEIGH", photonEnergy, rayleigh_gly, nEntries);
-
-    glycerine->SetMaterialPropertiesTable(mptGly);
-
-    fGlycerine = glycerine;
-
-    // -----------------------------------------------------------
-    // Log output
-    // -----------------------------------------------------------
-    G4cout << ">>> Media defined: Water, TiO2 colloid, and Glycerine." << G4endl;
-    G4cout << ">>> Selected medium: " << fMediumChoice;
-    if (fMediumChoice == "TiO2" || fMediumChoice == "TiO2_colloid")
-        G4cout << " | TiO2 conc: " << fTiO2conc << " %";
-    G4cout << G4endl;
+    G4cout << ">>> Medium selected: " << fMediumChoice
+           << " | TiO2 conc: " << fTiO2conc << "%" << G4endl;
 }
 
 // ===============================================================
@@ -250,15 +158,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
     // --- Select medium ---
     G4Material* innerMaterial = nullptr;
-    if (fMediumChoice == "Water") {
-        innerMaterial = water;
-    } else if (fMediumChoice == "TiO2") {
-        innerMaterial = TiO2_colloid;
-    } else if (fMediumChoice == "Glycerine") {
-        innerMaterial = fGlycerine;
-    } else {
+    if (fMediumChoice == "Water") innerMaterial = water;
+    else if (fMediumChoice == "TiO2") innerMaterial = TiO2_colloid;
+    else {
         G4Exception("DetectorConstruction::Construct()", "InvalidMedium", FatalException,
-                    "Unknown medium choice. Use 'Water', 'TiO2', or 'Glycerine'.");
+                    "Unknown medium choice. Use 'Water' or 'TiO2'.");
     }
 
     // --- Tank with selected medium ---

@@ -8,31 +8,47 @@
 #include "G4VisExecutive.hh"
 
 #include <string>
-#include <cstdlib>  // Para std::atoi
+#include <cstdlib>
+#include <map>
 
 int main(int argc, char** argv)
 {
   // Valores predeterminados
   int t = 1; // 1 seg
-  std::string nombreArchivoBase = "output.root";  // Nombre predeterminado
-  long seed = 12345;  // Semilla predeterminada
+  std::string nombreArchivoBase = "output.root";
+  long seed = 12345;
   bool useVis = false;
+
+  // --- Nuevos parámetros ---
+  std::string medium = "Water";  // "Water" o "TiO2"
+  double conc = 0.0;             // 0.01, 10, 20, 30
 
   // Analizar argumentos de la línea de comandos
   for (int i = 1; i < argc; i++) {
-    if (std::string(argv[i]) == "-time" && i + 1 < argc) {
-      t = std::atoi(argv[i + 1]);
-      i++;
-    } else if (std::string(argv[i]) == "-output" && i + 1 < argc) {
-      nombreArchivoBase = argv[i + 1];
-      i++;
-    } else if (std::string(argv[i]) == "-seed" && i + 1 < argc) {
-      seed = std::stol(argv[i + 1]);
-      i++;
-    } else if (std::string(argv[i]) == "-vis") {
+    std::string arg = argv[i];
+    if (arg == "-time" && i + 1 < argc) {
+      t = std::atoi(argv[++i]);
+    } else if (arg == "-output" && i + 1 < argc) {
+      nombreArchivoBase = argv[++i];
+    } else if (arg == "-seed" && i + 1 < argc) {
+      seed = std::stol(argv[++i]);
+    } else if (arg == "-vis") {
       useVis = true;
+    } else if (arg == "-medium" && i + 1 < argc) {
+      medium = argv[++i]; // e.g., Water or TiO2
+    } else if (arg == "-conc" && i + 1 < argc) {
+      conc = std::stod(argv[++i]); // e.g., 0.01, 10, 20, 30
     }
   }
+
+  G4cout << "----------------------------------------" << G4endl;
+  G4cout << " Selected Medium: " << medium << G4endl;
+
+  if (medium == "TiO2" || medium == "TiO2_colloid") {
+      G4cout << " TiO2 Concentration: " << conc << " %" << G4endl;
+  }
+
+  G4cout << "----------------------------------------" << G4endl;
 
   // *********************************************************************************
   std::map<std::string,double> particleRates = {
@@ -40,21 +56,17 @@ int main(int argc, char** argv)
     {"mu+",     74.862},
     {"e-",      38.204},
     {"e+",      21.610},
-    // {"gamma",  537.494},
-    {"proton",   5.018},
-    // {"neutron", 31.854}
+    {"proton",   5.018}
   };
 
-  // Convert rates into counts for the chosen simulation time window
   std::map<std::string,int> particleCounts;
-  double S_det = M_PI*(0.88*0.5)*(0.88*0.5); // Effective surface of the Cherenkov detector
+  double S_det = M_PI*(0.88*0.5)*(0.88*0.5);
   for (const auto& kv : particleRates) {
       int Ni = static_cast<int>(kv.second * S_det * t);
       particleCounts[kv.first] = Ni;
       G4cout << kv.first << " → " << Ni << G4endl;
   }
 
-  // Total number of particles across all species
   int Ntot = 0;
   for (auto& kv : particleCounts) Ntot += kv.second;
   G4cout << "Number of particles " << Ntot << G4endl;
@@ -62,20 +74,19 @@ int main(int argc, char** argv)
 
   std::string nombreArchivoSalida = "./rootFiles/" + nombreArchivoBase + "_" + std::to_string(seed);
 
-  // Determina si se está en modo interactivo
   G4UIExecutive* ui = nullptr;
-  if (argc == 1 || useVis) {
-    ui = new G4UIExecutive(argc, argv);
-  }
+  if (argc == 1 || useVis) ui = new G4UIExecutive(argc, argv);
 
-  // Seed for reproducibility, this might be unnecersary... or problematic
+  // Seed
   G4Random::setTheEngine(new CLHEP::RanecuEngine);
   CLHEP::HepRandom::setTheSeed(seed);
 
   // RunManager
   G4RunManager* runManager = new G4RunManager;
 
-  runManager->SetUserInitialization(new DetectorConstruction());
+  // *** DetectorConstruction with selectable medium and concentration ***
+  runManager->SetUserInitialization(new DetectorConstruction(medium, conc));
+
   runManager->SetUserInitialization(new PhysicsList());
   runManager->SetUserInitialization(new ActionInitialization(nombreArchivoSalida, particleCounts));
   runManager->Initialize();
