@@ -60,7 +60,7 @@ int main(int argc, char** argv)
   };
 
   std::map<std::string,int> particleCounts;
-  double S_det = M_PI*(0.88*0.5)*(0.88*0.5);
+  double S_det = M_PI*(0.268*0.5)*(0.268*0.5);
   for (const auto& kv : particleRates) {
       int Ni = static_cast<int>(kv.second * S_det * t);
       particleCounts[kv.first] = Ni;

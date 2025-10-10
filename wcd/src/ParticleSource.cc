@@ -11,7 +11,7 @@
 
 // --- NEW: simple params you can later expose via ctor or macro ---
 static const double Rcore_m  = 200.0;  // core-shift radius (m)
-static const double Rcatch_m = 1.5;    // catchment ~ tank radius + margin (m)
+static const double Rcatch_m = 0.6;    // catchment ~ tank radius + margin (m)
 static const double zTop_m   = 1.0;    // top of tank is ~1 m above ground
 static const int    kMaxPosTrials = 200; // resample attempts per particle
 
