@@ -10,10 +10,10 @@
 #include <map>
 
 // --- NEW: simple params you can later expose via ctor or macro ---
-static const double Rcore_m  = 200.0;  // core-shift radius (m)
-static const double Rcatch_m = 0.6;    // catchment ~ tank radius + margin (m)
-static const double zTop_m   = 1.0;    // top of tank is ~1 m above ground
-static const int    kMaxPosTrials = 200; // resample attempts per particle
+static const double Rcore_m  = 300.0;  // core-shift radius (m)
+static const double Rcatch_m = 0.3;    // catchment ~ tank radius + margin (m)
+static const double zTop_m   = 0.5;    // top of tank is ~1 m above ground
+static const int    kMaxPosTrials = 300; // resample attempts per particle
 
 // ------------------------------------------------------------
 ParticleSource::ParticleSource(int seed, const std::map<std::string,int>& counts)
@@ -25,29 +25,29 @@ ParticleSource::ParticleSource(int seed, const std::map<std::string,int>& counts
     LoadDistribution("../Distributions/mu-_energy.csv",   energyDistributions["mu-"]);
     LoadDistribution("../Distributions/mu-_theta.csv",    thetaDistributions["mu-"]);
     LoadDistribution("../Distributions/mu-_phi.csv",      phiDistributions["mu-"]);
-    LoadDistribution("../Distributions/mu-_r.csv",        rDistributions["mu-"]);   // NEW
+    LoadDistribution("../Distributions/mu-_r.csv",        rDistributions["mu-"]);   
 
     LoadDistribution("../Distributions/mu+_energy.csv",   energyDistributions["mu+"]);
     LoadDistribution("../Distributions/mu+_theta.csv",    thetaDistributions["mu+"]);
     LoadDistribution("../Distributions/mu+_phi.csv",      phiDistributions["mu+"]);
-    LoadDistribution("../Distributions/mu+_r.csv",        rDistributions["mu+"]);   // NEW
+    LoadDistribution("../Distributions/mu+_r.csv",        rDistributions["mu+"]);   
 
     // Electrons / positrons
     LoadDistribution("../Distributions/e-_energy.csv",    energyDistributions["e-"]);
     LoadDistribution("../Distributions/e-_theta.csv",     thetaDistributions["e-"]);
     LoadDistribution("../Distributions/e-_phi.csv",       phiDistributions["e-"]);
-    LoadDistribution("../Distributions/e-_r.csv",         rDistributions["e-"]);    // NEW
+    LoadDistribution("../Distributions/e-_r.csv",         rDistributions["e-"]);    
 
     LoadDistribution("../Distributions/e+_energy.csv",    energyDistributions["e+"]);
     LoadDistribution("../Distributions/e+_theta.csv",     thetaDistributions["e+"]);
     LoadDistribution("../Distributions/e+_phi.csv",       phiDistributions["e+"]);
-    LoadDistribution("../Distributions/e+_r.csv",         rDistributions["e+"]);    // NEW
+    LoadDistribution("../Distributions/e+_r.csv",         rDistributions["e+"]);    
 
     // Proton
     LoadDistribution("../Distributions/proton_energy.csv", energyDistributions["proton"]);
     LoadDistribution("../Distributions/proton_theta.csv",  thetaDistributions["proton"]);
     LoadDistribution("../Distributions/proton_phi.csv",    phiDistributions["proton"]);
-    LoadDistribution("../Distributions/proton_r.csv",      rDistributions["proton"]); // NEW
+    LoadDistribution("../Distributions/proton_r.csv",      rDistributions["proton"]); 
 }
 
 // ------------------------------------------------------------
